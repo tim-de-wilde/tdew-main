@@ -3,5 +3,5 @@ Options +FollowSymLinks
 RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 # Redirect requests to index.php
-RewriteCond %{REQUEST_URI} !=/tdewmain/html/
-RewriteRule .* /tdewmain/html/
+RewriteCond %{REQUEST_URI} !=/tdewmain/
+RewriteRule . /tdewmain/ [L]

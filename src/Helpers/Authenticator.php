@@ -1,22 +1,31 @@
 <?php
 namespace tdewmain\src\Helpers;
 
+use Propel\Runtime\Exception\LogicException;
+use User\UserQuery;
+
 /**
  * Class Authenticator
  */
 class Authenticator
 {
     /**
-     * @param UserSession $session
+     * @param String $username
+     * @param String $password
+     *
+     * @return bool
      */
-    public static function setUserSession(UserSession $session): void
+    public static function login(String $username, String $password): bool
     {
-        $_SESSION['username'] = $session->getUsername();
-        $_SESSION['token'] = $session->getToken();
+        if (static::checkCredentials($username, $password)) {
+            static::createSession($username, $password);
+            return true;
+        }
+        return false;
     }
 
     /**
-     * @return \Helpers\UserSession
+     * @return UserSession
      */
     public static function getUserSession(): UserSession
     {
@@ -36,7 +45,36 @@ class Authenticator
 
     public static function breakSession() : void
     {
-        unset($_SESSION);
         session_destroy();
+    }
+
+    /**
+     * @param String $username
+     * @param String $password
+     *
+     * @return bool
+     */
+    private static function checkCredentials(String $username, String $password): bool
+    {
+        $user = UserQuery::create()
+            ->filterByUsername($username)
+            ->findOne();
+
+        return password_verify($password, $user->getPassword());
+    }
+
+    /**
+     * @param String $username
+     * @param String $password
+     *
+     * @return void
+     */
+    private static function createSession(String $username, String $password): void
+    {
+        if (!static::inSession()) {
+            $_SESSION['username'] = $username;
+            $_SESSION['password'] = $password;
+        }
+        throw new LogicException('Trying to create session while a session is still active');
     }
 }
