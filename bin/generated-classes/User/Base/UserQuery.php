@@ -21,11 +21,23 @@ use User\Map\UserTableMap;
  *
  * @method     ChildUserQuery orderById($order = Criteria::ASC) Order by the id column
  * @method     ChildUserQuery orderByUsername($order = Criteria::ASC) Order by the username column
+ * @method     ChildUserQuery orderByEmail($order = Criteria::ASC) Order by the email column
  * @method     ChildUserQuery orderByPassword($order = Criteria::ASC) Order by the password column
+ * @method     ChildUserQuery orderByPermissions($order = Criteria::ASC) Order by the permissions column
+ * @method     ChildUserQuery orderBySpotifyAccessToken($order = Criteria::ASC) Order by the spotify_access_token column
+ * @method     ChildUserQuery orderBySpotifyRefreshToken($order = Criteria::ASC) Order by the spotify_refresh_token column
+ * @method     ChildUserQuery orderByCreatedAt($order = Criteria::ASC) Order by the created_at column
+ * @method     ChildUserQuery orderByUpdatedAt($order = Criteria::ASC) Order by the updated_at column
  *
  * @method     ChildUserQuery groupById() Group by the id column
  * @method     ChildUserQuery groupByUsername() Group by the username column
+ * @method     ChildUserQuery groupByEmail() Group by the email column
  * @method     ChildUserQuery groupByPassword() Group by the password column
+ * @method     ChildUserQuery groupByPermissions() Group by the permissions column
+ * @method     ChildUserQuery groupBySpotifyAccessToken() Group by the spotify_access_token column
+ * @method     ChildUserQuery groupBySpotifyRefreshToken() Group by the spotify_refresh_token column
+ * @method     ChildUserQuery groupByCreatedAt() Group by the created_at column
+ * @method     ChildUserQuery groupByUpdatedAt() Group by the updated_at column
  *
  * @method     ChildUserQuery leftJoin($relation) Adds a LEFT JOIN clause to the query
  * @method     ChildUserQuery rightJoin($relation) Adds a RIGHT JOIN clause to the query
@@ -40,19 +52,37 @@ use User\Map\UserTableMap;
  *
  * @method     ChildUser findOneById(int $id) Return the first ChildUser filtered by the id column
  * @method     ChildUser findOneByUsername(string $username) Return the first ChildUser filtered by the username column
- * @method     ChildUser findOneByPassword(string $password) Return the first ChildUser filtered by the password column *
+ * @method     ChildUser findOneByEmail(string $email) Return the first ChildUser filtered by the email column
+ * @method     ChildUser findOneByPassword(string $password) Return the first ChildUser filtered by the password column
+ * @method     ChildUser findOneByPermissions(int $permissions) Return the first ChildUser filtered by the permissions column
+ * @method     ChildUser findOneBySpotifyAccessToken(string $spotify_access_token) Return the first ChildUser filtered by the spotify_access_token column
+ * @method     ChildUser findOneBySpotifyRefreshToken(string $spotify_refresh_token) Return the first ChildUser filtered by the spotify_refresh_token column
+ * @method     ChildUser findOneByCreatedAt(string $created_at) Return the first ChildUser filtered by the created_at column
+ * @method     ChildUser findOneByUpdatedAt(string $updated_at) Return the first ChildUser filtered by the updated_at column *
 
  * @method     ChildUser requirePk($key, ConnectionInterface $con = null) Return the ChildUser by primary key and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildUser requireOne(ConnectionInterface $con = null) Return the first ChildUser matching the query and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  *
  * @method     ChildUser requireOneById(int $id) Return the first ChildUser filtered by the id column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildUser requireOneByUsername(string $username) Return the first ChildUser filtered by the username column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
+ * @method     ChildUser requireOneByEmail(string $email) Return the first ChildUser filtered by the email column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildUser requireOneByPassword(string $password) Return the first ChildUser filtered by the password column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
+ * @method     ChildUser requireOneByPermissions(int $permissions) Return the first ChildUser filtered by the permissions column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
+ * @method     ChildUser requireOneBySpotifyAccessToken(string $spotify_access_token) Return the first ChildUser filtered by the spotify_access_token column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
+ * @method     ChildUser requireOneBySpotifyRefreshToken(string $spotify_refresh_token) Return the first ChildUser filtered by the spotify_refresh_token column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
+ * @method     ChildUser requireOneByCreatedAt(string $created_at) Return the first ChildUser filtered by the created_at column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
+ * @method     ChildUser requireOneByUpdatedAt(string $updated_at) Return the first ChildUser filtered by the updated_at column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  *
  * @method     ChildUser[]|ObjectCollection find(ConnectionInterface $con = null) Return ChildUser objects based on current ModelCriteria
  * @method     ChildUser[]|ObjectCollection findById(int $id) Return ChildUser objects filtered by the id column
  * @method     ChildUser[]|ObjectCollection findByUsername(string $username) Return ChildUser objects filtered by the username column
+ * @method     ChildUser[]|ObjectCollection findByEmail(string $email) Return ChildUser objects filtered by the email column
  * @method     ChildUser[]|ObjectCollection findByPassword(string $password) Return ChildUser objects filtered by the password column
+ * @method     ChildUser[]|ObjectCollection findByPermissions(int $permissions) Return ChildUser objects filtered by the permissions column
+ * @method     ChildUser[]|ObjectCollection findBySpotifyAccessToken(string $spotify_access_token) Return ChildUser objects filtered by the spotify_access_token column
+ * @method     ChildUser[]|ObjectCollection findBySpotifyRefreshToken(string $spotify_refresh_token) Return ChildUser objects filtered by the spotify_refresh_token column
+ * @method     ChildUser[]|ObjectCollection findByCreatedAt(string $created_at) Return ChildUser objects filtered by the created_at column
+ * @method     ChildUser[]|ObjectCollection findByUpdatedAt(string $updated_at) Return ChildUser objects filtered by the updated_at column
  * @method     ChildUser[]|\Propel\Runtime\Util\PropelModelPager paginate($page = 1, $maxPerPage = 10, ConnectionInterface $con = null) Issue a SELECT query based on the current ModelCriteria and uses a page and a maximum number of results per page to compute an offset and a limit
  *
  */
@@ -151,7 +181,7 @@ abstract class UserQuery extends ModelCriteria
      */
     protected function findPkSimple($key, ConnectionInterface $con)
     {
-        $sql = 'SELECT id, username, password FROM user WHERE id = :p0';
+        $sql = 'SELECT id, username, email, password, permissions, spotify_access_token, spotify_refresh_token, created_at, updated_at FROM user WHERE id = :p0';
         try {
             $stmt = $con->prepare($sql);
             $stmt->bindValue(':p0', $key, PDO::PARAM_INT);
@@ -308,6 +338,31 @@ abstract class UserQuery extends ModelCriteria
     }
 
     /**
+     * Filter the query on the email column
+     *
+     * Example usage:
+     * <code>
+     * $query->filterByEmail('fooValue');   // WHERE email = 'fooValue'
+     * $query->filterByEmail('%fooValue%', Criteria::LIKE); // WHERE email LIKE '%fooValue%'
+     * </code>
+     *
+     * @param     string $email The value to use as filter.
+     * @param     string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
+     *
+     * @return $this|ChildUserQuery The current query, for fluid interface
+     */
+    public function filterByEmail($email = null, $comparison = null)
+    {
+        if (null === $comparison) {
+            if (is_array($email)) {
+                $comparison = Criteria::IN;
+            }
+        }
+
+        return $this->addUsingAlias(UserTableMap::COL_EMAIL, $email, $comparison);
+    }
+
+    /**
      * Filter the query on the password column
      *
      * Example usage:
@@ -330,6 +385,175 @@ abstract class UserQuery extends ModelCriteria
         }
 
         return $this->addUsingAlias(UserTableMap::COL_PASSWORD, $password, $comparison);
+    }
+
+    /**
+     * Filter the query on the permissions column
+     *
+     * @param     mixed $permissions The value to use as filter
+     * @param     string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
+     *
+     * @return $this|ChildUserQuery The current query, for fluid interface
+     */
+    public function filterByPermissions($permissions = null, $comparison = null)
+    {
+        $valueSet = UserTableMap::getValueSet(UserTableMap::COL_PERMISSIONS);
+        if (is_scalar($permissions)) {
+            if (!in_array($permissions, $valueSet)) {
+                throw new PropelException(sprintf('Value "%s" is not accepted in this enumerated column', $permissions));
+            }
+            $permissions = array_search($permissions, $valueSet);
+        } elseif (is_array($permissions)) {
+            $convertedValues = array();
+            foreach ($permissions as $value) {
+                if (!in_array($value, $valueSet)) {
+                    throw new PropelException(sprintf('Value "%s" is not accepted in this enumerated column', $value));
+                }
+                $convertedValues []= array_search($value, $valueSet);
+            }
+            $permissions = $convertedValues;
+            if (null === $comparison) {
+                $comparison = Criteria::IN;
+            }
+        }
+
+        return $this->addUsingAlias(UserTableMap::COL_PERMISSIONS, $permissions, $comparison);
+    }
+
+    /**
+     * Filter the query on the spotify_access_token column
+     *
+     * Example usage:
+     * <code>
+     * $query->filterBySpotifyAccessToken('fooValue');   // WHERE spotify_access_token = 'fooValue'
+     * $query->filterBySpotifyAccessToken('%fooValue%', Criteria::LIKE); // WHERE spotify_access_token LIKE '%fooValue%'
+     * </code>
+     *
+     * @param     string $spotifyAccessToken The value to use as filter.
+     * @param     string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
+     *
+     * @return $this|ChildUserQuery The current query, for fluid interface
+     */
+    public function filterBySpotifyAccessToken($spotifyAccessToken = null, $comparison = null)
+    {
+        if (null === $comparison) {
+            if (is_array($spotifyAccessToken)) {
+                $comparison = Criteria::IN;
+            }
+        }
+
+        return $this->addUsingAlias(UserTableMap::COL_SPOTIFY_ACCESS_TOKEN, $spotifyAccessToken, $comparison);
+    }
+
+    /**
+     * Filter the query on the spotify_refresh_token column
+     *
+     * Example usage:
+     * <code>
+     * $query->filterBySpotifyRefreshToken('fooValue');   // WHERE spotify_refresh_token = 'fooValue'
+     * $query->filterBySpotifyRefreshToken('%fooValue%', Criteria::LIKE); // WHERE spotify_refresh_token LIKE '%fooValue%'
+     * </code>
+     *
+     * @param     string $spotifyRefreshToken The value to use as filter.
+     * @param     string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
+     *
+     * @return $this|ChildUserQuery The current query, for fluid interface
+     */
+    public function filterBySpotifyRefreshToken($spotifyRefreshToken = null, $comparison = null)
+    {
+        if (null === $comparison) {
+            if (is_array($spotifyRefreshToken)) {
+                $comparison = Criteria::IN;
+            }
+        }
+
+        return $this->addUsingAlias(UserTableMap::COL_SPOTIFY_REFRESH_TOKEN, $spotifyRefreshToken, $comparison);
+    }
+
+    /**
+     * Filter the query on the created_at column
+     *
+     * Example usage:
+     * <code>
+     * $query->filterByCreatedAt('2011-03-14'); // WHERE created_at = '2011-03-14'
+     * $query->filterByCreatedAt('now'); // WHERE created_at = '2011-03-14'
+     * $query->filterByCreatedAt(array('max' => 'yesterday')); // WHERE created_at > '2011-03-13'
+     * </code>
+     *
+     * @param     mixed $createdAt The value to use as filter.
+     *              Values can be integers (unix timestamps), DateTime objects, or strings.
+     *              Empty strings are treated as NULL.
+     *              Use scalar values for equality.
+     *              Use array values for in_array() equivalent.
+     *              Use associative array('min' => $minValue, 'max' => $maxValue) for intervals.
+     * @param     string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
+     *
+     * @return $this|ChildUserQuery The current query, for fluid interface
+     */
+    public function filterByCreatedAt($createdAt = null, $comparison = null)
+    {
+        if (is_array($createdAt)) {
+            $useMinMax = false;
+            if (isset($createdAt['min'])) {
+                $this->addUsingAlias(UserTableMap::COL_CREATED_AT, $createdAt['min'], Criteria::GREATER_EQUAL);
+                $useMinMax = true;
+            }
+            if (isset($createdAt['max'])) {
+                $this->addUsingAlias(UserTableMap::COL_CREATED_AT, $createdAt['max'], Criteria::LESS_EQUAL);
+                $useMinMax = true;
+            }
+            if ($useMinMax) {
+                return $this;
+            }
+            if (null === $comparison) {
+                $comparison = Criteria::IN;
+            }
+        }
+
+        return $this->addUsingAlias(UserTableMap::COL_CREATED_AT, $createdAt, $comparison);
+    }
+
+    /**
+     * Filter the query on the updated_at column
+     *
+     * Example usage:
+     * <code>
+     * $query->filterByUpdatedAt('2011-03-14'); // WHERE updated_at = '2011-03-14'
+     * $query->filterByUpdatedAt('now'); // WHERE updated_at = '2011-03-14'
+     * $query->filterByUpdatedAt(array('max' => 'yesterday')); // WHERE updated_at > '2011-03-13'
+     * </code>
+     *
+     * @param     mixed $updatedAt The value to use as filter.
+     *              Values can be integers (unix timestamps), DateTime objects, or strings.
+     *              Empty strings are treated as NULL.
+     *              Use scalar values for equality.
+     *              Use array values for in_array() equivalent.
+     *              Use associative array('min' => $minValue, 'max' => $maxValue) for intervals.
+     * @param     string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
+     *
+     * @return $this|ChildUserQuery The current query, for fluid interface
+     */
+    public function filterByUpdatedAt($updatedAt = null, $comparison = null)
+    {
+        if (is_array($updatedAt)) {
+            $useMinMax = false;
+            if (isset($updatedAt['min'])) {
+                $this->addUsingAlias(UserTableMap::COL_UPDATED_AT, $updatedAt['min'], Criteria::GREATER_EQUAL);
+                $useMinMax = true;
+            }
+            if (isset($updatedAt['max'])) {
+                $this->addUsingAlias(UserTableMap::COL_UPDATED_AT, $updatedAt['max'], Criteria::LESS_EQUAL);
+                $useMinMax = true;
+            }
+            if ($useMinMax) {
+                return $this;
+            }
+            if (null === $comparison) {
+                $comparison = Criteria::IN;
+            }
+        }
+
+        return $this->addUsingAlias(UserTableMap::COL_UPDATED_AT, $updatedAt, $comparison);
     }
 
     /**
@@ -407,6 +631,72 @@ abstract class UserQuery extends ModelCriteria
 
             return $affectedRows;
         });
+    }
+
+    // timestampable behavior
+
+    /**
+     * Filter by the latest updated
+     *
+     * @param      int $nbDays Maximum age of the latest update in days
+     *
+     * @return     $this|ChildUserQuery The current query, for fluid interface
+     */
+    public function recentlyUpdated($nbDays = 7)
+    {
+        return $this->addUsingAlias(UserTableMap::COL_UPDATED_AT, time() - $nbDays * 24 * 60 * 60, Criteria::GREATER_EQUAL);
+    }
+
+    /**
+     * Order by update date desc
+     *
+     * @return     $this|ChildUserQuery The current query, for fluid interface
+     */
+    public function lastUpdatedFirst()
+    {
+        return $this->addDescendingOrderByColumn(UserTableMap::COL_UPDATED_AT);
+    }
+
+    /**
+     * Order by update date asc
+     *
+     * @return     $this|ChildUserQuery The current query, for fluid interface
+     */
+    public function firstUpdatedFirst()
+    {
+        return $this->addAscendingOrderByColumn(UserTableMap::COL_UPDATED_AT);
+    }
+
+    /**
+     * Order by create date desc
+     *
+     * @return     $this|ChildUserQuery The current query, for fluid interface
+     */
+    public function lastCreatedFirst()
+    {
+        return $this->addDescendingOrderByColumn(UserTableMap::COL_CREATED_AT);
+    }
+
+    /**
+     * Filter by the latest created
+     *
+     * @param      int $nbDays Maximum age of in days
+     *
+     * @return     $this|ChildUserQuery The current query, for fluid interface
+     */
+    public function recentlyCreated($nbDays = 7)
+    {
+        return $this->addUsingAlias(UserTableMap::COL_CREATED_AT, time() - $nbDays * 24 * 60 * 60, Criteria::GREATER_EQUAL);
+    }
+
+    /**
+     * Order by create date asc
+     *
+     * @return     $this|ChildUserQuery The current query, for fluid interface
+     */
+    public function firstCreatedFirst()
+    {
+        return $this->addAscendingOrderByColumn(UserTableMap::COL_CREATED_AT);
     }
 
 } // UserQuery

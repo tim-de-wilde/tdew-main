@@ -1,0 +1,184 @@
+{% extends 'base.twig' %}
+
+{% block content %}
+    <body class="uk-background-secondary">
+        <div class="uk-container uk-container-medium uk-background-secondary">
+
+                <div>
+                    <div class="uk-grid uk-grid-medium uk-text-left" uk-grid>
+                        <div>
+                            <h2 class="uk-text-bold uk-margin-remove tdw-nav-header-unselect">
+                                My Band
+                            </h2>
+                        </div>
+                        <div>
+                            <h2 class="uk-text-bold uk-margin-remove uk-text-capitalize tdw-nav-header-unselect" style="color: white; font-size: 30pt; user-select: none">
+                                Suggestions
+                            </h2>
+                        </div>
+                        <div>
+                            <h2 class="uk-text-bold uk-margin-remove uk-text-capitalize tdw-nav-header-unselect" style="color: white; font-size: 30pt; user-select: none;">
+                                Best Tracks
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+
+            <hr>
+            <div class="uk-margin-medium"></div>
+
+            <div class="uk-child-width-1-2@s uk-grid uk-grid-match uk-grid-small uk-margin-medium-bottom" uk-grid>
+                {% for val in temp %}
+                    <div>
+                        <div class="uk-inline-clip uk-transition-toggle uk-light" tabindex="0">
+                            <div class="uk-card uk-card-default uk-card-small uk-background-secondary">
+                                <div class="uk-card-body uk-padding-remove" style="user-select: none">
+                                    <div class="uk-grid-small uk-flex-middle"
+                                         uk-grid>
+                                        <div class="uk-width-auto">
+                                            <img class="" width="130"
+                                                 height="130"
+                                                 src="{{ val.img_url }}">
+                                        </div>
+                                        <div class="uk-width-expand">
+                                            <p class="uk-card-title uk-margin-remove-bottom" style="color: #FDFDFD">{{ val.name }}</p>
+                                            <p class="uk-text-meta uk-margin-remove-top uk-text-middle" style="color: #c4c4c4">{{ val.artist }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="uk-transition-fade uk-position-cover uk-overlay uk-overlay-primary uk-dark">
+                                <div class="uk-grid-small uk-flex uk-flex-center" style="user-select: none" uk-grid>
+                                    <div class="uk-width-1-5 uk-flex">
+                                        <span class="play-button uk-margin-auto-vertical" style="cursor: pointer" track_uri="{{ val.uri }}">
+                                            <i class="material-icons" id="icon" style="font-size: 70px">play_arrow</i>
+                                        </span>
+                                    </div>
+                                    <div class="uk-width-4-5 uk-flex" id="rangeDiv">
+                                        <input type="range" id="range" value="0" class="uk-range uk-margin-auto-vertical" max="{{ val.duration_ms / 1000 }}"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <script src="https://sdk.scdn.co/spotify-player.js"></script>
+
+        <script>
+            window.onSpotifyWebPlaybackSDKReady = () => {
+                let token = '{{ spotifyAccessToken }}';
+                const player = new Spotify.Player({
+                    name: 'Band Playlist',
+                    getOAuthToken: cb => {cb(token);}
+                });
+
+                player.on('ready', ({ device_id }) => {
+                    console.log('Ready with Device ID ', device_id);
+
+                    $.ajax({
+                        method: 'GET',
+                        url: '{{ ROOT }}/BandPlaylist/SetDeviceId/' + device_id
+                    })
+                });
+
+                player.connect();
+
+                function playTrack(trackUri)
+                {
+                    $.ajax({
+                        method: 'GET',
+                        url: '{{ ROOT }}/BandPlaylist/Play/' + trackUri,
+                        async: false
+                    });
+                }
+
+
+                //Global vars
+                let playerIsPaused = true;
+                let lastTrack = '';
+
+                //Handle change event
+                $('input[type=range]').on('change', function () {
+                    player.seek($(this).val() * 1000);
+
+                    if (!playerIsPaused) {
+                        countRangeUp($(this));
+                    }
+                });
+
+                // Handle play button clicks
+                $('.play-button').on('click', function () {
+                    let parentDiv = $(this).parent().parent();
+                    let subDiv = parentDiv.find('#rangeDiv');
+                    let object = subDiv.find('input[type=range]');
+
+                    let currentTrack = $(this).attr('track_uri');
+
+                    $(this).prop('disabled', true);
+
+                    if (playerIsPaused || (!playerIsPaused && lastTrack !== currentTrack)) {
+                        if (lastTrack === currentTrack) {
+                            player.resume();
+                        } else {
+                            playTrack(currentTrack);
+                            object.val(0);
+                            lastTrack = currentTrack;
+                        }
+
+                        countRangeUp(object);
+                        playerIsPaused = false;
+                    }  else {
+                        player.pause();
+                        playerIsPaused = true;
+                        clearInterval(interval);
+                    }
+
+                    togglePlayIcon($(this).find('#icon'));
+
+
+                    $(this).prop('disabled', false);
+                });
+
+                function togglePlayIcon(icon)
+                {
+                    icon.html((icon.html() === 'pause') ? 'play_arrow' : 'pause');
+                }
+
+                let interval;
+                function countRangeUp(rangeObject)
+                {
+                    clearInterval(interval);
+
+                    let initialValue = parseInt(rangeObject.val());
+                    let max = parseInt(rangeObject.attr('max'));
+                    let index = 0;
+
+                    interval = setInterval(
+                        function () {
+                            let pos = index + initialValue;
+
+                            rangeObject.val(parseInt(pos));
+
+                            if (pos >= max) {
+                                clearInterval(interval);
+                            }
+
+                            index ++;
+                        }, 1000
+                    )
+                }
+
+            };
+        </script>
+    </body>
+{% endblock %}
+
+{% block script %}
+    <script>
+
+    </script>
+{% endblock %}

@@ -1,0 +1,97 @@
+<div class="uk-modal-dialog uk-modal-body tdw-background-frostglass uk-light" style="border-radius: 5px">
+    <form class="uk-animation-fade toggle" method="post" id="loginForm">
+        <h2 class="uk-modal-title uk-text-bold">Log in</h2>
+
+        <fieldset class="uk-fieldset">
+            <h2 class="uk-text-small">Log-in met je gebruikersnaam en
+                wachtwoord.</h2>
+            <hr class="uk-divider-icon">
+
+            <div class="uk-alert-danger uk-hidden" id="too-many-attempts-alert"
+                 uk-alert>
+                <a class="uk-alert-close" uk-close></a>
+                <p>Je hebt te veel loginpogingen gemaakt. Probeer het later
+                    opnieuw.</p>
+            </div>
+
+            <div class="uk-margin">
+                <input class="uk-input uk-width-1-1" placeholder="Username"
+                       type="text" id="username" name="username">
+            </div>
+
+            <div class="uk-margin">
+                <input class="uk-input uk-width-1-1" placeholder="Password"
+                       type="password" id="pass" name="pass">
+            </div>
+
+            <p class="uk-text-small uk-margin-remove uk-text-muted">
+                Nog geen account? <a href="#" uk-toggle="target: .toggle">Registreer
+                    hier.</a>
+            </p>
+        </fieldset>
+
+        <p class="uk-text-right">
+            <button class="uk-button uk-button-default uk-modal-close"
+                    type="button">Cancel
+            </button>
+            <button class="uk-button uk-button-secondary uk-form-width-medium"
+                    type="submit" id="login-button">Login
+            </button>
+        </p>
+    </form>
+
+    <form class="uk-animation-fade toggle" method="post" id="registerForm"
+          hidden>
+        <h2 class="uk-modal-title uk-text-bold">Registreer</h2>
+
+        <fieldset class="uk-fieldset">
+            <h2 class="uk-text-small">Registreer met een gebruikersnaam,
+                wachtwoord en e-mail.</h2>
+            <hr class="uk-divider-icon">
+
+            <div class="uk-alert-danger uk-hidden" id="register-alert"
+                 uk-alert>
+                <a class="uk-alert-close" uk-close></a>
+                <p id="register-alert-text">Registratie mislukt! Probeer een
+                    ander e-mailadres te gebruiken.</p>
+            </div>
+
+            <div class="uk-margin">
+                <input class="uk-input uk-width-1-1" placeholder="E-mail"
+                       type="email" id="register-email" name="register-email"
+                       required>
+            </div>
+
+            <div class="uk-margin">
+                <input class="uk-input uk-width-1-1" placeholder="Username"
+                       type="text" id="register-username"
+                       name="register-username" required>
+            </div>
+
+            <div class="uk-margin">
+                <input class="uk-input uk-width-1-1" placeholder="Password"
+                       type="password" id="register-pass" name="register-pass"
+                       required>
+            </div>
+
+            <div class="uk-margin">
+                <input class="uk-input uk-width-1-1"
+                       placeholder="Confirm password"
+                       type="password" id="register-pass2" name="register-pass2"
+                       required>
+            </div>
+        </fieldset>
+
+        <p class="uk-text-right">
+            <button class="uk-button uk-button-default"
+                    type="button" uk-toggle="target: .toggle">Cancel
+            </button>
+            <button class="uk-button uk-button-secondary uk-form-width-medium"
+                    type="submit" id="register-button">Registreer
+            </button>
+        </p>
+
+    </form>
+
+    <div class="tdw-blur"></div>
+</div>

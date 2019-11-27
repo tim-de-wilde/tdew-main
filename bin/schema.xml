@@ -2,6 +2,18 @@
     <table name="user" phpName="User" namespace="User">
         <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
         <column name="username" type="varchar" size="255" required="true" />
+        <column name="email" type="varchar" size="255" required="true" />
         <column name="password" type="varchar" size="255" required="true" />
+        <column name="permissions" type="ENUM" valueSet="guest, user, admin" defaultValue="user"/>
+        <column name="spotify_access_token" type="varchar" size="255"/>
+        <column name="spotify_refresh_token" type="varchar" size="255"/>
+        <behavior name="timestampable" />
+    </table>
+    <table name="session_lock" phpName="SessionLock" namespace="SessionLock">
+        <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
+        <column name="session" type="varchar" size="255" required="true" />
+        <column name="expires" type="TIMESTAMP" required="true"/>
+        <column name="is_expired" type="BOOLEAN" required="true" defaultValue="false"/>
+        <behavior name="timestampable" />
     </table>
 </database>

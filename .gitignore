@@ -1,3 +1,7 @@
 /vendor/
 /assets/
-/config/
+/bin/
+/uikit/
+"composer.json"
+"composer.lock"
+".htaccess"

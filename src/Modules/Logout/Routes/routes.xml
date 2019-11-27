@@ -1,0 +1,8 @@
+<routes>
+    <route>
+        <method>GET</method>
+        <route>/Logout</route>
+        <controller>\tdewmain\src\Modules\Logout\Controllers\Logout</controller>
+        <permissions>user</permissions>
+    </route>
+</routes>

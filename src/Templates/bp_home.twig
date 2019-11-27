@@ -1,0 +1,35 @@
+{% extends 'base.twig' %}
+
+{% block header_color %}
+    background-color: #222;
+{% endblock %}
+
+{% block content %}
+    <body class="uk-background-secondary">
+        <div class="uk-margin-large-top">
+            <div class="uk-container uk-container-expand uk-width-1-1">
+                <div class="uk-text-center" style="color: #dbdbdb">
+                    <h1 class="uk-text-bold uk-margin-remove" style="color: white; font-size: 80pt; user-select: none;">
+                        Band Playlist
+                    </h1>
+
+                    <p class="uk-text-large">
+                        Share songs with your band
+                    </p>
+
+                    <div class="uk-margin-medium-top">
+                        <button id="verifyButton" class="uk-button uk-button-large uk-button-default uk-text-bold uk-animation-fade" style=" color: #dbdbdb;">Connect with spotify</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+{% endblock %}
+
+{% block script %}
+    <script>
+        $("#verifyButton").on("click", function () {
+            window.location.href = "{{ ROOT }}/BandPlaylist/Verify";
+        })
+    </script>
+{% endblock %}

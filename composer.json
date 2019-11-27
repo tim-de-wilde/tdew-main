@@ -8,7 +8,10 @@
     ],
     "require": {
         "propel/propel": "~2.0@dev",
-        "altorouter/altorouter": "1.1.0"
+        "altorouter/altorouter": "1.1.0",
+        "twig/twig": "^2.0",
+        "jwilsson/spotify-web-api-php": "^2.10",
+        "sentry/sdk": "2.0.3"
     },
     "autoload": {
         "classmap": ["src/", "bin/generated-classes/"]

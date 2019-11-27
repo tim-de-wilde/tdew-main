@@ -1,23 +1,21 @@
 <?php
-
 namespace tdewmain\src\Views;
 
 use tdewmain\src\Helpers\AbstractController;
 use tdewmain\src\Helpers\PageResponse;
-use User\UserQuery;
 
 /**
- * Class PageNotFound
+ * Class AccessDenied
  *
  * @package tdewmain\src\Views
  */
-class PageNotFound extends AbstractController
+class AccessDenied extends AbstractController
 {
     /**
      * @return PageResponse
      */
     public function show(): PageResponse
     {
-        return new PageResponse('notFound.twig', []);
+        return new PageResponse('accessDenied.twig', []);
     }
 }

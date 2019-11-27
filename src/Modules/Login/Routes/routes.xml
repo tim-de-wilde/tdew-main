@@ -1,0 +1,14 @@
+<routes>
+    <route>
+        <method>POST</method>
+        <route>/Login</route>
+        <controller>\tdewmain\src\Modules\Login\Controllers\Login</controller>
+        <permissions>guest</permissions>
+    </route>
+    <route>
+        <method>POST</method>
+        <route>/Login/Register</route>
+        <controller>\tdewmain\src\Modules\Login\Controllers\Register</controller>
+        <permissions>guest</permissions>
+    </route>
+</routes>

@@ -59,7 +59,7 @@ class UserTableMap extends TableMap
     /**
      * The total number of columns
      */
-    const NUM_COLUMNS = 3;
+    const NUM_COLUMNS = 9;
 
     /**
      * The number of lazy-loaded columns
@@ -69,7 +69,7 @@ class UserTableMap extends TableMap
     /**
      * The number of columns to hydrate (NUM_COLUMNS - NUM_LAZY_LOAD_COLUMNS)
      */
-    const NUM_HYDRATE_COLUMNS = 3;
+    const NUM_HYDRATE_COLUMNS = 9;
 
     /**
      * the column name for the id field
@@ -82,14 +82,49 @@ class UserTableMap extends TableMap
     const COL_USERNAME = 'user.username';
 
     /**
+     * the column name for the email field
+     */
+    const COL_EMAIL = 'user.email';
+
+    /**
      * the column name for the password field
      */
     const COL_PASSWORD = 'user.password';
 
     /**
+     * the column name for the permissions field
+     */
+    const COL_PERMISSIONS = 'user.permissions';
+
+    /**
+     * the column name for the spotify_access_token field
+     */
+    const COL_SPOTIFY_ACCESS_TOKEN = 'user.spotify_access_token';
+
+    /**
+     * the column name for the spotify_refresh_token field
+     */
+    const COL_SPOTIFY_REFRESH_TOKEN = 'user.spotify_refresh_token';
+
+    /**
+     * the column name for the created_at field
+     */
+    const COL_CREATED_AT = 'user.created_at';
+
+    /**
+     * the column name for the updated_at field
+     */
+    const COL_UPDATED_AT = 'user.updated_at';
+
+    /**
      * The default string format for model objects of the related table
      */
     const DEFAULT_STRING_FORMAT = 'YAML';
+
+    /** The enumerated values for the permissions field */
+    const COL_PERMISSIONS_GUEST = 'guest';
+    const COL_PERMISSIONS_USER = 'user';
+    const COL_PERMISSIONS_ADMIN = 'admin';
 
     /**
      * holds an array of fieldnames
@@ -98,11 +133,11 @@ class UserTableMap extends TableMap
      * e.g. self::$fieldNames[self::TYPE_PHPNAME][0] = 'Id'
      */
     protected static $fieldNames = array (
-        self::TYPE_PHPNAME       => array('Id', 'Username', 'Password', ),
-        self::TYPE_CAMELNAME     => array('id', 'username', 'password', ),
-        self::TYPE_COLNAME       => array(UserTableMap::COL_ID, UserTableMap::COL_USERNAME, UserTableMap::COL_PASSWORD, ),
-        self::TYPE_FIELDNAME     => array('id', 'username', 'password', ),
-        self::TYPE_NUM           => array(0, 1, 2, )
+        self::TYPE_PHPNAME       => array('Id', 'Username', 'Email', 'Password', 'Permissions', 'SpotifyAccessToken', 'SpotifyRefreshToken', 'CreatedAt', 'UpdatedAt', ),
+        self::TYPE_CAMELNAME     => array('id', 'username', 'email', 'password', 'permissions', 'spotifyAccessToken', 'spotifyRefreshToken', 'createdAt', 'updatedAt', ),
+        self::TYPE_COLNAME       => array(UserTableMap::COL_ID, UserTableMap::COL_USERNAME, UserTableMap::COL_EMAIL, UserTableMap::COL_PASSWORD, UserTableMap::COL_PERMISSIONS, UserTableMap::COL_SPOTIFY_ACCESS_TOKEN, UserTableMap::COL_SPOTIFY_REFRESH_TOKEN, UserTableMap::COL_CREATED_AT, UserTableMap::COL_UPDATED_AT, ),
+        self::TYPE_FIELDNAME     => array('id', 'username', 'email', 'password', 'permissions', 'spotify_access_token', 'spotify_refresh_token', 'created_at', 'updated_at', ),
+        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, 6, 7, 8, )
     );
 
     /**
@@ -112,12 +147,42 @@ class UserTableMap extends TableMap
      * e.g. self::$fieldKeys[self::TYPE_PHPNAME]['Id'] = 0
      */
     protected static $fieldKeys = array (
-        self::TYPE_PHPNAME       => array('Id' => 0, 'Username' => 1, 'Password' => 2, ),
-        self::TYPE_CAMELNAME     => array('id' => 0, 'username' => 1, 'password' => 2, ),
-        self::TYPE_COLNAME       => array(UserTableMap::COL_ID => 0, UserTableMap::COL_USERNAME => 1, UserTableMap::COL_PASSWORD => 2, ),
-        self::TYPE_FIELDNAME     => array('id' => 0, 'username' => 1, 'password' => 2, ),
-        self::TYPE_NUM           => array(0, 1, 2, )
+        self::TYPE_PHPNAME       => array('Id' => 0, 'Username' => 1, 'Email' => 2, 'Password' => 3, 'Permissions' => 4, 'SpotifyAccessToken' => 5, 'SpotifyRefreshToken' => 6, 'CreatedAt' => 7, 'UpdatedAt' => 8, ),
+        self::TYPE_CAMELNAME     => array('id' => 0, 'username' => 1, 'email' => 2, 'password' => 3, 'permissions' => 4, 'spotifyAccessToken' => 5, 'spotifyRefreshToken' => 6, 'createdAt' => 7, 'updatedAt' => 8, ),
+        self::TYPE_COLNAME       => array(UserTableMap::COL_ID => 0, UserTableMap::COL_USERNAME => 1, UserTableMap::COL_EMAIL => 2, UserTableMap::COL_PASSWORD => 3, UserTableMap::COL_PERMISSIONS => 4, UserTableMap::COL_SPOTIFY_ACCESS_TOKEN => 5, UserTableMap::COL_SPOTIFY_REFRESH_TOKEN => 6, UserTableMap::COL_CREATED_AT => 7, UserTableMap::COL_UPDATED_AT => 8, ),
+        self::TYPE_FIELDNAME     => array('id' => 0, 'username' => 1, 'email' => 2, 'password' => 3, 'permissions' => 4, 'spotify_access_token' => 5, 'spotify_refresh_token' => 6, 'created_at' => 7, 'updated_at' => 8, ),
+        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, 6, 7, 8, )
     );
+
+    /** The enumerated values for this table */
+    protected static $enumValueSets = array(
+                UserTableMap::COL_PERMISSIONS => array(
+                            self::COL_PERMISSIONS_GUEST,
+            self::COL_PERMISSIONS_USER,
+            self::COL_PERMISSIONS_ADMIN,
+        ),
+    );
+
+    /**
+     * Gets the list of values for all ENUM and SET columns
+     * @return array
+     */
+    public static function getValueSets()
+    {
+      return static::$enumValueSets;
+    }
+
+    /**
+     * Gets the list of values for an ENUM or SET column
+     * @param string $colname
+     * @return array list of possible values for the column
+     */
+    public static function getValueSet($colname)
+    {
+        $valueSets = self::getValueSets();
+
+        return $valueSets[$colname];
+    }
 
     /**
      * Initialize the table attributes and columns
@@ -138,7 +203,18 @@ class UserTableMap extends TableMap
         // columns
         $this->addPrimaryKey('id', 'Id', 'INTEGER', true, null, null);
         $this->addColumn('username', 'Username', 'VARCHAR', true, 255, null);
+        $this->addColumn('email', 'Email', 'VARCHAR', true, 255, null);
         $this->addColumn('password', 'Password', 'VARCHAR', true, 255, null);
+        $this->addColumn('permissions', 'Permissions', 'ENUM', false, null, 'user');
+        $this->getColumn('permissions')->setValueSet(array (
+  0 => 'guest',
+  1 => 'user',
+  2 => 'admin',
+));
+        $this->addColumn('spotify_access_token', 'SpotifyAccessToken', 'VARCHAR', false, 255, null);
+        $this->addColumn('spotify_refresh_token', 'SpotifyRefreshToken', 'VARCHAR', false, 255, null);
+        $this->addColumn('created_at', 'CreatedAt', 'TIMESTAMP', false, null, null);
+        $this->addColumn('updated_at', 'UpdatedAt', 'TIMESTAMP', false, null, null);
     } // initialize()
 
     /**
@@ -147,6 +223,19 @@ class UserTableMap extends TableMap
     public function buildRelations()
     {
     } // buildRelations()
+
+    /**
+     *
+     * Gets the list of behaviors registered for this table
+     *
+     * @return array Associative array (name => parameters) of behaviors
+     */
+    public function getBehaviors()
+    {
+        return array(
+            'timestampable' => array('create_column' => 'created_at', 'update_column' => 'updated_at', 'disable_created_at' => 'false', 'disable_updated_at' => 'false', ),
+        );
+    } // getBehaviors()
 
     /**
      * Retrieves a string version of the primary key from the DB resultset row that can be used to uniquely identify a row in this table.
@@ -291,11 +380,23 @@ class UserTableMap extends TableMap
         if (null === $alias) {
             $criteria->addSelectColumn(UserTableMap::COL_ID);
             $criteria->addSelectColumn(UserTableMap::COL_USERNAME);
+            $criteria->addSelectColumn(UserTableMap::COL_EMAIL);
             $criteria->addSelectColumn(UserTableMap::COL_PASSWORD);
+            $criteria->addSelectColumn(UserTableMap::COL_PERMISSIONS);
+            $criteria->addSelectColumn(UserTableMap::COL_SPOTIFY_ACCESS_TOKEN);
+            $criteria->addSelectColumn(UserTableMap::COL_SPOTIFY_REFRESH_TOKEN);
+            $criteria->addSelectColumn(UserTableMap::COL_CREATED_AT);
+            $criteria->addSelectColumn(UserTableMap::COL_UPDATED_AT);
         } else {
             $criteria->addSelectColumn($alias . '.id');
             $criteria->addSelectColumn($alias . '.username');
+            $criteria->addSelectColumn($alias . '.email');
             $criteria->addSelectColumn($alias . '.password');
+            $criteria->addSelectColumn($alias . '.permissions');
+            $criteria->addSelectColumn($alias . '.spotify_access_token');
+            $criteria->addSelectColumn($alias . '.spotify_refresh_token');
+            $criteria->addSelectColumn($alias . '.created_at');
+            $criteria->addSelectColumn($alias . '.updated_at');
         }
     }
 

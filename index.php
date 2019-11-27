@@ -1,36 +1,75 @@
 <?php
 namespace tdewmain;
 
-use AltoRouter;
-use tdewmain\src\Views\Homepage;
+use function Sentry\captureException;
+use function Sentry\init;
+use tdewmain\config\LocalConfig;
+use tdewmain\src\Helpers\AutoRoute;
+use tdewmain\src\Helpers\Functions;
+use tdewmain\src\Helpers\Session;
+use tdewmain\src\Helpers\SpotifyAuth;
+use tdewmain\src\Views\ErrorFound;
+use Twig\Environment;
+use Twig\Loader\FilesystemLoader;
 
-session_start();
 include __DIR__ . '/vendor/autoload.php';
 
+//setup Sentry
+init(['dsn' => 'https://273e50e1a3264de4ba2ae966863c67f4@sentry.io/1773142']);
+
+try {
+    include __DIR__ . '/src/Helpers/Session.php';
+    include __DIR__ . '/src/Helpers/Token.php';
+    Session::create();
+
+// global functions
+    include __DIR__ . '/src/Helpers/Functions.php';
+
+// global constants
+    include __DIR__ . '/src/Helpers/constants.php';
+
+//setup Local Config
+    include __DIR__ . '/config/LocalConfig.php';
+
 //setup Propel
-include __DIR__ . '/bin/generated-conf/config.php';
-?>
-<html lang="en">
-<head>
-    <title>tdew</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="http://localhost/tdewmain/assets/css/uikit.min.css" />
-    <script src="http://localhost/tdewmain/assets/js/uikit.min.js"></script>
-    <script src="http://localhost/tdewmain/assets/js/uikit-icons.min.js"></script>
-</head>
-<body>
-<?php
-include __DIR__ . '/src/Views/Base.php';
+    include __DIR__ . '/bin/generated-conf/config.php';
 
-$router = new AltoRouter();
+//setup Spotify API
+    include __DIR__ . '/src/Helpers/SpotifyAuth.php';
+    SpotifyAuth::init();
 
-$router->map('GET', '/', function () {
-    (new Homepage())->render();
-});
-?>
+// router
+    include __DIR__ . '/vendor/altorouter/altorouter/AltoRouter.php';
+    $altoRouter = new \AltoRouter();
+    $altoRouter->setBasePath('/tdewmain');
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-</body>
-</html>
+    include __DIR__ . '/src/Modules/Homepage/Controllers/Homepage.php';
+    $altoRouter->map('POST|GET', '/', function () {
+        Functions::internRedirect('Home');
+        die();
+    });
+
+    include __DIR__ . '/src/Helpers/AutoRoute.php';
+    $autoRoute = new AutoRoute($altoRouter);
+
+    include __DIR__ . '/vendor/twig/twig/src/Loader/FilesystemLoader.php';
+    include __DIR__ . '/vendor/twig/twig/src/Environment.php';
+
+    $twigLoader = new FilesystemLoader(__DIR__ . '/src/Templates');
+    $twig = new Environment(
+        $twigLoader
+//    [
+//        'cache' => __DIR__ . '/src/Templates/compilation_cache'
+//    ]
+    );
+
+    LocalConfig::setTwigEnvironment($twig);
+
+    $autoRoute->route();
+} catch (\Throwable $e) {
+    captureException($e);
+    (new ErrorFound())->render();
+}
+
+
 

@@ -1,0 +1,40 @@
+{% extends 'base.twig' %}
+
+{% block content %}
+    <body class="uk-background-secondary">
+            <div class="uk-margin-large-top">
+                <div class="uk-container uk-container-expand uk-width-1-1">
+
+                    <div class="uk-text-center" style="color: #fff">
+                        <span uk-icon="icon: bolt; ratio: 4.5"></span>
+                        <h1 class="uk-text-bold uk-margin-remove" style="color: white; font-size: 80pt; user-select: none;">
+                            tdew
+                        </h1>
+                    </div>
+                </div>
+
+                <div class="uk-margin-medium-top">
+                    <div class="uk-container uk-container-xsmall">
+                        <div class="uk-child-width-expand" uk-grid  uk-scrollspy="cls: uk-animation-fade; target: .uk-card; delay: 200; repeat: false">
+                            <div>
+                                <a class="uk-link-reset" href="{{ ROOT }}/BandPlaylist">
+                                    <div class="uk-card uk-card-default uk-card-body">
+                                        <h3 class="uk-card-title">Band Playlist</h3>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div>
+                                <a class="uk-link-reset" href="http://localhost/garagewiets">
+                                    <div class="uk-card uk-card-default uk-card-body">
+                                        <h3 class="uk-card-title">Garage Wiets</h3>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </body>
+{% endblock %}

@@ -2,6 +2,7 @@
 
 namespace User\Base;
 
+use \DateTime;
 use \Exception;
 use \PDO;
 use Propel\Runtime\Propel;
@@ -15,6 +16,8 @@ use Propel\Runtime\Exception\LogicException;
 use Propel\Runtime\Exception\PropelException;
 use Propel\Runtime\Map\TableMap;
 use Propel\Runtime\Parser\AbstractParser;
+use Propel\Runtime\Util\PropelDateTime;
+use User\User as ChildUser;
 use User\UserQuery as ChildUserQuery;
 use User\Map\UserTableMap;
 
@@ -74,11 +77,54 @@ abstract class User implements ActiveRecordInterface
     protected $username;
 
     /**
+     * The value for the email field.
+     *
+     * @var        string
+     */
+    protected $email;
+
+    /**
      * The value for the password field.
      *
      * @var        string
      */
     protected $password;
+
+    /**
+     * The value for the permissions field.
+     *
+     * Note: this column has a database default value of: 1
+     * @var        int
+     */
+    protected $permissions;
+
+    /**
+     * The value for the spotify_access_token field.
+     *
+     * @var        string
+     */
+    protected $spotify_access_token;
+
+    /**
+     * The value for the spotify_refresh_token field.
+     *
+     * @var        string
+     */
+    protected $spotify_refresh_token;
+
+    /**
+     * The value for the created_at field.
+     *
+     * @var        DateTime
+     */
+    protected $created_at;
+
+    /**
+     * The value for the updated_at field.
+     *
+     * @var        DateTime
+     */
+    protected $updated_at;
 
     /**
      * Flag to prevent endless save loop, if this object is referenced
@@ -89,10 +135,23 @@ abstract class User implements ActiveRecordInterface
     protected $alreadyInSave = false;
 
     /**
+     * Applies default values to this object.
+     * This method should be called from the object's constructor (or
+     * equivalent initialization method).
+     * @see __construct()
+     */
+    public function applyDefaultValues()
+    {
+        $this->permissions = 1;
+    }
+
+    /**
      * Initializes internal state of User\Base\User object.
+     * @see applyDefaults()
      */
     public function __construct()
     {
+        $this->applyDefaultValues();
     }
 
     /**
@@ -334,6 +393,16 @@ abstract class User implements ActiveRecordInterface
     }
 
     /**
+     * Get the [email] column value.
+     *
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
      * Get the [password] column value.
      *
      * @return string
@@ -341,6 +410,85 @@ abstract class User implements ActiveRecordInterface
     public function getPassword()
     {
         return $this->password;
+    }
+
+    /**
+     * Get the [permissions] column value.
+     *
+     * @return string
+     * @throws \Propel\Runtime\Exception\PropelException
+     */
+    public function getPermissions()
+    {
+        if (null === $this->permissions) {
+            return null;
+        }
+        $valueSet = UserTableMap::getValueSet(UserTableMap::COL_PERMISSIONS);
+        if (!isset($valueSet[$this->permissions])) {
+            throw new PropelException('Unknown stored enum key: ' . $this->permissions);
+        }
+
+        return $valueSet[$this->permissions];
+    }
+
+    /**
+     * Get the [spotify_access_token] column value.
+     *
+     * @return string
+     */
+    public function getSpotifyAccessToken()
+    {
+        return $this->spotify_access_token;
+    }
+
+    /**
+     * Get the [spotify_refresh_token] column value.
+     *
+     * @return string
+     */
+    public function getSpotifyRefreshToken()
+    {
+        return $this->spotify_refresh_token;
+    }
+
+    /**
+     * Get the [optionally formatted] temporal [created_at] column value.
+     *
+     *
+     * @param      string|null $format The date/time format string (either date()-style or strftime()-style).
+     *                            If format is NULL, then the raw DateTime object will be returned.
+     *
+     * @return string|DateTime Formatted date/time value as string or DateTime object (if format is NULL), NULL if column is NULL, and 0 if column value is 0000-00-00 00:00:00
+     *
+     * @throws PropelException - if unable to parse/validate the date/time value.
+     */
+    public function getCreatedAt($format = NULL)
+    {
+        if ($format === null) {
+            return $this->created_at;
+        } else {
+            return $this->created_at instanceof \DateTimeInterface ? $this->created_at->format($format) : null;
+        }
+    }
+
+    /**
+     * Get the [optionally formatted] temporal [updated_at] column value.
+     *
+     *
+     * @param      string|null $format The date/time format string (either date()-style or strftime()-style).
+     *                            If format is NULL, then the raw DateTime object will be returned.
+     *
+     * @return string|DateTime Formatted date/time value as string or DateTime object (if format is NULL), NULL if column is NULL, and 0 if column value is 0000-00-00 00:00:00
+     *
+     * @throws PropelException - if unable to parse/validate the date/time value.
+     */
+    public function getUpdatedAt($format = NULL)
+    {
+        if ($format === null) {
+            return $this->updated_at;
+        } else {
+            return $this->updated_at instanceof \DateTimeInterface ? $this->updated_at->format($format) : null;
+        }
     }
 
     /**
@@ -384,6 +532,26 @@ abstract class User implements ActiveRecordInterface
     } // setUsername()
 
     /**
+     * Set the value of [email] column.
+     *
+     * @param string $v new value
+     * @return $this|\User\User The current object (for fluent API support)
+     */
+    public function setEmail($v)
+    {
+        if ($v !== null) {
+            $v = (string) $v;
+        }
+
+        if ($this->email !== $v) {
+            $this->email = $v;
+            $this->modifiedColumns[UserTableMap::COL_EMAIL] = true;
+        }
+
+        return $this;
+    } // setEmail()
+
+    /**
      * Set the value of [password] column.
      *
      * @param string $v new value
@@ -404,6 +572,111 @@ abstract class User implements ActiveRecordInterface
     } // setPassword()
 
     /**
+     * Set the value of [permissions] column.
+     *
+     * @param  string $v new value
+     * @return $this|\User\User The current object (for fluent API support)
+     * @throws \Propel\Runtime\Exception\PropelException
+     */
+    public function setPermissions($v)
+    {
+        if ($v !== null) {
+            $valueSet = UserTableMap::getValueSet(UserTableMap::COL_PERMISSIONS);
+            if (!in_array($v, $valueSet)) {
+                throw new PropelException(sprintf('Value "%s" is not accepted in this enumerated column', $v));
+            }
+            $v = array_search($v, $valueSet);
+        }
+
+        if ($this->permissions !== $v) {
+            $this->permissions = $v;
+            $this->modifiedColumns[UserTableMap::COL_PERMISSIONS] = true;
+        }
+
+        return $this;
+    } // setPermissions()
+
+    /**
+     * Set the value of [spotify_access_token] column.
+     *
+     * @param string $v new value
+     * @return $this|\User\User The current object (for fluent API support)
+     */
+    public function setSpotifyAccessToken($v)
+    {
+        if ($v !== null) {
+            $v = (string) $v;
+        }
+
+        if ($this->spotify_access_token !== $v) {
+            $this->spotify_access_token = $v;
+            $this->modifiedColumns[UserTableMap::COL_SPOTIFY_ACCESS_TOKEN] = true;
+        }
+
+        return $this;
+    } // setSpotifyAccessToken()
+
+    /**
+     * Set the value of [spotify_refresh_token] column.
+     *
+     * @param string $v new value
+     * @return $this|\User\User The current object (for fluent API support)
+     */
+    public function setSpotifyRefreshToken($v)
+    {
+        if ($v !== null) {
+            $v = (string) $v;
+        }
+
+        if ($this->spotify_refresh_token !== $v) {
+            $this->spotify_refresh_token = $v;
+            $this->modifiedColumns[UserTableMap::COL_SPOTIFY_REFRESH_TOKEN] = true;
+        }
+
+        return $this;
+    } // setSpotifyRefreshToken()
+
+    /**
+     * Sets the value of [created_at] column to a normalized version of the date/time value specified.
+     *
+     * @param  mixed $v string, integer (timestamp), or \DateTimeInterface value.
+     *               Empty strings are treated as NULL.
+     * @return $this|\User\User The current object (for fluent API support)
+     */
+    public function setCreatedAt($v)
+    {
+        $dt = PropelDateTime::newInstance($v, null, 'DateTime');
+        if ($this->created_at !== null || $dt !== null) {
+            if ($this->created_at === null || $dt === null || $dt->format("Y-m-d H:i:s.u") !== $this->created_at->format("Y-m-d H:i:s.u")) {
+                $this->created_at = $dt === null ? null : clone $dt;
+                $this->modifiedColumns[UserTableMap::COL_CREATED_AT] = true;
+            }
+        } // if either are not null
+
+        return $this;
+    } // setCreatedAt()
+
+    /**
+     * Sets the value of [updated_at] column to a normalized version of the date/time value specified.
+     *
+     * @param  mixed $v string, integer (timestamp), or \DateTimeInterface value.
+     *               Empty strings are treated as NULL.
+     * @return $this|\User\User The current object (for fluent API support)
+     */
+    public function setUpdatedAt($v)
+    {
+        $dt = PropelDateTime::newInstance($v, null, 'DateTime');
+        if ($this->updated_at !== null || $dt !== null) {
+            if ($this->updated_at === null || $dt === null || $dt->format("Y-m-d H:i:s.u") !== $this->updated_at->format("Y-m-d H:i:s.u")) {
+                $this->updated_at = $dt === null ? null : clone $dt;
+                $this->modifiedColumns[UserTableMap::COL_UPDATED_AT] = true;
+            }
+        } // if either are not null
+
+        return $this;
+    } // setUpdatedAt()
+
+    /**
      * Indicates whether the columns in this object are only set to default values.
      *
      * This method can be used in conjunction with isModified() to indicate whether an object is both
@@ -413,6 +686,10 @@ abstract class User implements ActiveRecordInterface
      */
     public function hasOnlyDefaultValues()
     {
+            if ($this->permissions !== 1) {
+                return false;
+            }
+
         // otherwise, everything was equal, so return TRUE
         return true;
     } // hasOnlyDefaultValues()
@@ -445,8 +722,32 @@ abstract class User implements ActiveRecordInterface
             $col = $row[TableMap::TYPE_NUM == $indexType ? 1 + $startcol : UserTableMap::translateFieldName('Username', TableMap::TYPE_PHPNAME, $indexType)];
             $this->username = (null !== $col) ? (string) $col : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 2 + $startcol : UserTableMap::translateFieldName('Password', TableMap::TYPE_PHPNAME, $indexType)];
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 2 + $startcol : UserTableMap::translateFieldName('Email', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->email = (null !== $col) ? (string) $col : null;
+
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 3 + $startcol : UserTableMap::translateFieldName('Password', TableMap::TYPE_PHPNAME, $indexType)];
             $this->password = (null !== $col) ? (string) $col : null;
+
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 4 + $startcol : UserTableMap::translateFieldName('Permissions', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->permissions = (null !== $col) ? (int) $col : null;
+
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 5 + $startcol : UserTableMap::translateFieldName('SpotifyAccessToken', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->spotify_access_token = (null !== $col) ? (string) $col : null;
+
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 6 + $startcol : UserTableMap::translateFieldName('SpotifyRefreshToken', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->spotify_refresh_token = (null !== $col) ? (string) $col : null;
+
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 7 + $startcol : UserTableMap::translateFieldName('CreatedAt', TableMap::TYPE_PHPNAME, $indexType)];
+            if ($col === '0000-00-00 00:00:00') {
+                $col = null;
+            }
+            $this->created_at = (null !== $col) ? PropelDateTime::newInstance($col, null, 'DateTime') : null;
+
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 8 + $startcol : UserTableMap::translateFieldName('UpdatedAt', TableMap::TYPE_PHPNAME, $indexType)];
+            if ($col === '0000-00-00 00:00:00') {
+                $col = null;
+            }
+            $this->updated_at = (null !== $col) ? PropelDateTime::newInstance($col, null, 'DateTime') : null;
             $this->resetModified();
 
             $this->setNew(false);
@@ -455,7 +756,7 @@ abstract class User implements ActiveRecordInterface
                 $this->ensureConsistency();
             }
 
-            return $startcol + 3; // 3 = UserTableMap::NUM_HYDRATE_COLUMNS.
+            return $startcol + 9; // 9 = UserTableMap::NUM_HYDRATE_COLUMNS.
 
         } catch (Exception $e) {
             throw new PropelException(sprintf('Error populating %s object', '\\User\\User'), 0, $e);
@@ -582,8 +883,21 @@ abstract class User implements ActiveRecordInterface
             $isInsert = $this->isNew();
             if ($isInsert) {
                 $ret = $ret && $this->preInsert($con);
+                // timestampable behavior
+                $time = time();
+                $highPrecision = \Propel\Runtime\Util\PropelDateTime::createHighPrecision();
+                if (!$this->isColumnModified(UserTableMap::COL_CREATED_AT)) {
+                    $this->setCreatedAt($highPrecision);
+                }
+                if (!$this->isColumnModified(UserTableMap::COL_UPDATED_AT)) {
+                    $this->setUpdatedAt($highPrecision);
+                }
             } else {
                 $ret = $ret && $this->preUpdate($con);
+                // timestampable behavior
+                if ($this->isModified() && !$this->isColumnModified(UserTableMap::COL_UPDATED_AT)) {
+                    $this->setUpdatedAt(\Propel\Runtime\Util\PropelDateTime::createHighPrecision());
+                }
             }
             if ($ret) {
                 $affectedRows = $this->doSave($con);
@@ -662,8 +976,26 @@ abstract class User implements ActiveRecordInterface
         if ($this->isColumnModified(UserTableMap::COL_USERNAME)) {
             $modifiedColumns[':p' . $index++]  = 'username';
         }
+        if ($this->isColumnModified(UserTableMap::COL_EMAIL)) {
+            $modifiedColumns[':p' . $index++]  = 'email';
+        }
         if ($this->isColumnModified(UserTableMap::COL_PASSWORD)) {
             $modifiedColumns[':p' . $index++]  = 'password';
+        }
+        if ($this->isColumnModified(UserTableMap::COL_PERMISSIONS)) {
+            $modifiedColumns[':p' . $index++]  = 'permissions';
+        }
+        if ($this->isColumnModified(UserTableMap::COL_SPOTIFY_ACCESS_TOKEN)) {
+            $modifiedColumns[':p' . $index++]  = 'spotify_access_token';
+        }
+        if ($this->isColumnModified(UserTableMap::COL_SPOTIFY_REFRESH_TOKEN)) {
+            $modifiedColumns[':p' . $index++]  = 'spotify_refresh_token';
+        }
+        if ($this->isColumnModified(UserTableMap::COL_CREATED_AT)) {
+            $modifiedColumns[':p' . $index++]  = 'created_at';
+        }
+        if ($this->isColumnModified(UserTableMap::COL_UPDATED_AT)) {
+            $modifiedColumns[':p' . $index++]  = 'updated_at';
         }
 
         $sql = sprintf(
@@ -682,8 +1014,26 @@ abstract class User implements ActiveRecordInterface
                     case 'username':
                         $stmt->bindValue($identifier, $this->username, PDO::PARAM_STR);
                         break;
+                    case 'email':
+                        $stmt->bindValue($identifier, $this->email, PDO::PARAM_STR);
+                        break;
                     case 'password':
                         $stmt->bindValue($identifier, $this->password, PDO::PARAM_STR);
+                        break;
+                    case 'permissions':
+                        $stmt->bindValue($identifier, $this->permissions, PDO::PARAM_INT);
+                        break;
+                    case 'spotify_access_token':
+                        $stmt->bindValue($identifier, $this->spotify_access_token, PDO::PARAM_STR);
+                        break;
+                    case 'spotify_refresh_token':
+                        $stmt->bindValue($identifier, $this->spotify_refresh_token, PDO::PARAM_STR);
+                        break;
+                    case 'created_at':
+                        $stmt->bindValue($identifier, $this->created_at ? $this->created_at->format("Y-m-d H:i:s.u") : null, PDO::PARAM_STR);
+                        break;
+                    case 'updated_at':
+                        $stmt->bindValue($identifier, $this->updated_at ? $this->updated_at->format("Y-m-d H:i:s.u") : null, PDO::PARAM_STR);
                         break;
                 }
             }
@@ -754,7 +1104,25 @@ abstract class User implements ActiveRecordInterface
                 return $this->getUsername();
                 break;
             case 2:
+                return $this->getEmail();
+                break;
+            case 3:
                 return $this->getPassword();
+                break;
+            case 4:
+                return $this->getPermissions();
+                break;
+            case 5:
+                return $this->getSpotifyAccessToken();
+                break;
+            case 6:
+                return $this->getSpotifyRefreshToken();
+                break;
+            case 7:
+                return $this->getCreatedAt();
+                break;
+            case 8:
+                return $this->getUpdatedAt();
                 break;
             default:
                 return null;
@@ -787,8 +1155,22 @@ abstract class User implements ActiveRecordInterface
         $result = array(
             $keys[0] => $this->getId(),
             $keys[1] => $this->getUsername(),
-            $keys[2] => $this->getPassword(),
+            $keys[2] => $this->getEmail(),
+            $keys[3] => $this->getPassword(),
+            $keys[4] => $this->getPermissions(),
+            $keys[5] => $this->getSpotifyAccessToken(),
+            $keys[6] => $this->getSpotifyRefreshToken(),
+            $keys[7] => $this->getCreatedAt(),
+            $keys[8] => $this->getUpdatedAt(),
         );
+        if ($result[$keys[7]] instanceof \DateTimeInterface) {
+            $result[$keys[7]] = $result[$keys[7]]->format('c');
+        }
+
+        if ($result[$keys[8]] instanceof \DateTimeInterface) {
+            $result[$keys[8]] = $result[$keys[8]]->format('c');
+        }
+
         $virtualColumns = $this->virtualColumns;
         foreach ($virtualColumns as $key => $virtualColumn) {
             $result[$key] = $virtualColumn;
@@ -834,7 +1216,29 @@ abstract class User implements ActiveRecordInterface
                 $this->setUsername($value);
                 break;
             case 2:
+                $this->setEmail($value);
+                break;
+            case 3:
                 $this->setPassword($value);
+                break;
+            case 4:
+                $valueSet = UserTableMap::getValueSet(UserTableMap::COL_PERMISSIONS);
+                if (isset($valueSet[$value])) {
+                    $value = $valueSet[$value];
+                }
+                $this->setPermissions($value);
+                break;
+            case 5:
+                $this->setSpotifyAccessToken($value);
+                break;
+            case 6:
+                $this->setSpotifyRefreshToken($value);
+                break;
+            case 7:
+                $this->setCreatedAt($value);
+                break;
+            case 8:
+                $this->setUpdatedAt($value);
                 break;
         } // switch()
 
@@ -869,7 +1273,25 @@ abstract class User implements ActiveRecordInterface
             $this->setUsername($arr[$keys[1]]);
         }
         if (array_key_exists($keys[2], $arr)) {
-            $this->setPassword($arr[$keys[2]]);
+            $this->setEmail($arr[$keys[2]]);
+        }
+        if (array_key_exists($keys[3], $arr)) {
+            $this->setPassword($arr[$keys[3]]);
+        }
+        if (array_key_exists($keys[4], $arr)) {
+            $this->setPermissions($arr[$keys[4]]);
+        }
+        if (array_key_exists($keys[5], $arr)) {
+            $this->setSpotifyAccessToken($arr[$keys[5]]);
+        }
+        if (array_key_exists($keys[6], $arr)) {
+            $this->setSpotifyRefreshToken($arr[$keys[6]]);
+        }
+        if (array_key_exists($keys[7], $arr)) {
+            $this->setCreatedAt($arr[$keys[7]]);
+        }
+        if (array_key_exists($keys[8], $arr)) {
+            $this->setUpdatedAt($arr[$keys[8]]);
         }
     }
 
@@ -918,8 +1340,26 @@ abstract class User implements ActiveRecordInterface
         if ($this->isColumnModified(UserTableMap::COL_USERNAME)) {
             $criteria->add(UserTableMap::COL_USERNAME, $this->username);
         }
+        if ($this->isColumnModified(UserTableMap::COL_EMAIL)) {
+            $criteria->add(UserTableMap::COL_EMAIL, $this->email);
+        }
         if ($this->isColumnModified(UserTableMap::COL_PASSWORD)) {
             $criteria->add(UserTableMap::COL_PASSWORD, $this->password);
+        }
+        if ($this->isColumnModified(UserTableMap::COL_PERMISSIONS)) {
+            $criteria->add(UserTableMap::COL_PERMISSIONS, $this->permissions);
+        }
+        if ($this->isColumnModified(UserTableMap::COL_SPOTIFY_ACCESS_TOKEN)) {
+            $criteria->add(UserTableMap::COL_SPOTIFY_ACCESS_TOKEN, $this->spotify_access_token);
+        }
+        if ($this->isColumnModified(UserTableMap::COL_SPOTIFY_REFRESH_TOKEN)) {
+            $criteria->add(UserTableMap::COL_SPOTIFY_REFRESH_TOKEN, $this->spotify_refresh_token);
+        }
+        if ($this->isColumnModified(UserTableMap::COL_CREATED_AT)) {
+            $criteria->add(UserTableMap::COL_CREATED_AT, $this->created_at);
+        }
+        if ($this->isColumnModified(UserTableMap::COL_UPDATED_AT)) {
+            $criteria->add(UserTableMap::COL_UPDATED_AT, $this->updated_at);
         }
 
         return $criteria;
@@ -1008,7 +1448,13 @@ abstract class User implements ActiveRecordInterface
     public function copyInto($copyObj, $deepCopy = false, $makeNew = true)
     {
         $copyObj->setUsername($this->getUsername());
+        $copyObj->setEmail($this->getEmail());
         $copyObj->setPassword($this->getPassword());
+        $copyObj->setPermissions($this->getPermissions());
+        $copyObj->setSpotifyAccessToken($this->getSpotifyAccessToken());
+        $copyObj->setSpotifyRefreshToken($this->getSpotifyRefreshToken());
+        $copyObj->setCreatedAt($this->getCreatedAt());
+        $copyObj->setUpdatedAt($this->getUpdatedAt());
         if ($makeNew) {
             $copyObj->setNew(true);
             $copyObj->setId(NULL); // this is a auto-increment column, so set to default value
@@ -1046,9 +1492,16 @@ abstract class User implements ActiveRecordInterface
     {
         $this->id = null;
         $this->username = null;
+        $this->email = null;
         $this->password = null;
+        $this->permissions = null;
+        $this->spotify_access_token = null;
+        $this->spotify_refresh_token = null;
+        $this->created_at = null;
+        $this->updated_at = null;
         $this->alreadyInSave = false;
         $this->clearAllReferences();
+        $this->applyDefaultValues();
         $this->resetModified();
         $this->setNew(true);
         $this->setDeleted(false);
@@ -1077,6 +1530,20 @@ abstract class User implements ActiveRecordInterface
     public function __toString()
     {
         return (string) $this->exportTo(UserTableMap::DEFAULT_STRING_FORMAT);
+    }
+
+    // timestampable behavior
+
+    /**
+     * Mark the current object so that the update date doesn't get updated during next save
+     *
+     * @return     $this|ChildUser The current object (for fluent API support)
+     */
+    public function keepUpdateDateUnchanged()
+    {
+        $this->modifiedColumns[UserTableMap::COL_UPDATED_AT] = true;
+
+        return $this;
     }
 
     /**

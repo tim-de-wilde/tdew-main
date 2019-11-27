@@ -1,4 +1,5 @@
 <?php
+namespace tdewmain\bin;
 
 return [
     'propel' => [
