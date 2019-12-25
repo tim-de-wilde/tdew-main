@@ -2,70 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3b3cba13-1cba-42ee-a2fe-beba78347925" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/remote/login.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/.htaccess" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Helpers/AutoRoute.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Helpers/Functions.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Helpers/Menu.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Helpers/PageResponse.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Helpers/Session.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Helpers/SpotifyAuth.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Helpers/Token.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Helpers/constants.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Modules/BandPlaylist/Controllers/BandPlaylist.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Modules/BandPlaylist/Controllers/Overview.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Modules/BandPlaylist/Controllers/Play.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Modules/BandPlaylist/Controllers/SetSpotifyDeviceId.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Modules/BandPlaylist/Controllers/Verify.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Modules/BandPlaylist/Routes/routes.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Modules/Homepage/Routes/routes.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Modules/Login/Controllers/Login.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Modules/Login/Controllers/Register.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Modules/Login/Routes/routes.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Modules/Logout/Controllers/Logout.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Modules/Logout/Routes/routes.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Templates/accessDenied.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Templates/base.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Templates/bp_home.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Templates/bp_overview.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Templates/errorFound.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Templates/homepage.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Templates/infoView.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Templates/login_modal.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Templates/notFound.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Templates/register.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Views/AccessDenied.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Views/ErrorFound.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Helpers/AbstractHTMLContainer.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Helpers/AbstractHTMLItem.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Helpers/Canvas.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Modules/BandPlaylist/Controllers/SetTrackLike.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Modules/BandPlaylist/Helpers/CardContainer.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Modules/BandPlaylist/Helpers/TrackCard.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Templates/_cardContainer.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Templates/_trackCard.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Templates/dynamicBase.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/tdewmain.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/tdewmain.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/css/uikit-rtl.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/css/uikit-rtl.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/css/uikit.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/css/uikit.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/uikit-icons.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/uikit-icons.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/uikit.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/uikit.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/generated-classes/User/Base/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/bin/generated-classes/User/Base/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/generated-classes/User/Base/UserQuery.php" beforeDir="false" afterPath="$PROJECT_DIR$/bin/generated-classes/User/Base/UserQuery.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/generated-classes/User/Map/UserTableMap.php" beforeDir="false" afterPath="$PROJECT_DIR$/bin/generated-classes/User/Map/UserTableMap.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/generated-sql/tdew.sql" beforeDir="false" afterPath="$PROJECT_DIR$/bin/generated-sql/tdew.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/propel.php" beforeDir="false" afterPath="$PROJECT_DIR$/bin/propel.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/schema.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bin/schema.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Helpers/AbstractPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Helpers/AbstractController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Helpers/AbstractController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Helpers/AbstractController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Helpers/Authenticator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Helpers/Authenticator.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/Base.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/Homepage.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Modules/Homepage/Controllers/Homepage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/Login.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/PageNotFound.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/PageNotFound.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Helpers/Session.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Helpers/Session.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Helpers/SpotifyAuth.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Helpers/SpotifyAuth.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Modules/BandPlaylist/Controllers/BandPlaylist.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Modules/BandPlaylist/Controllers/BandPlaylist.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Modules/BandPlaylist/Controllers/Overview.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Modules/BandPlaylist/Controllers/Overview.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Modules/BandPlaylist/Controllers/Verify.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Modules/BandPlaylist/Controllers/Verify.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Modules/BandPlaylist/Routes/routes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Modules/BandPlaylist/Routes/routes.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Templates/bp_overview.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Templates/bp_overview.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/uikit/dist/css/uikit.css" beforeDir="false" afterPath="$PROJECT_DIR$/uikit/dist/css/uikit.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/uikit/dist/css/uikit.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/uikit/dist/css/uikit.min.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/uikit/dist/js/uikit-icons.js" beforeDir="false" afterPath="$PROJECT_DIR$/uikit/dist/js/uikit-icons.js" afterDir="false" />
@@ -87,23 +47,63 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Helpers/AbstractController.php">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Templates/_trackCard.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="12" column="15" selection-start-line="12" selection-start-column="15" selection-end-line="12" selection-end-column="15" />
+            <state relative-caret-position="272">
+              <caret line="16" column="18" lean-forward="true" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
               <folding>
-                <element signature="e#40#72#0#PHP" expanded="true" />
+                <element signature="n#style#0;n#i#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#i#1;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Templates/bp_overview.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="49" column="45" lean-forward="true" selection-start-line="49" selection-start-column="45" selection-end-line="49" selection-end-column="45" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Modules/BandPlaylist/Controllers/SetTrackLike.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="510">
+              <caret line="33" column="22" selection-start-line="33" selection-start-column="22" selection-end-line="33" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Modules/BandPlaylist/Helpers/TrackCard.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="19" column="18" lean-forward="true" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
+              <folding>
+                <element signature="e#60#102#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.htaccess">
+        <entry file="file://$PROJECT_DIR$/src/Modules/BandPlaylist/Routes/routes.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="31" selection-start-line="3" selection-start-column="31" selection-end-line="3" selection-end-column="35" />
+            <state relative-caret-position="442">
+              <caret line="26" column="28" lean-forward="true" selection-start-line="26" selection-start-column="28" selection-end-line="26" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bin/schema.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="561">
+              <caret line="33" column="59" lean-forward="true" selection-start-line="33" selection-start-column="59" selection-end-line="33" selection-end-column="59" />
             </state>
           </provider>
         </entry>
@@ -135,6 +135,9 @@
       <find>var_dump</find>
       <find>second</find>
       <find>style</find>
+      <find>usersession</find>
+      <find>setuser</find>
+      <find>login</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -143,57 +146,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Templates/schnee.twig" />
-        <option value="$PROJECT_DIR$/src/Modules/Register/Controllers/Register.php" />
-        <option value="$PROJECT_DIR$/src/Modules/Register/Routes/routes.xml" />
-        <option value="$PROJECT_DIR$/src/Modules/Login/Controllers/Register.php" />
-        <option value="$PROJECT_DIR$/src/.htaccess" />
-        <option value="$PROJECT_DIR$/src/Templates/register.twig" />
-        <option value="$PROJECT_DIR$/src/Helpers/spotifyAuth.php" />
-        <option value="$PROJECT_DIR$/src/Helpers/LocalConfig.php" />
-        <option value="$PROJECT_DIR$/src/Views/ErrorFound.php" />
-        <option value="$PROJECT_DIR$/src/Templates/bp.twig" />
-        <option value="$PROJECT_DIR$/src/Helpers/Functions.php" />
-        <option value="$PROJECT_DIR$/src/Templates/testpage.html" />
-        <option value="$PROJECT_DIR$/src/Modules/Flow/Routes/routes.xml" />
-        <option value="$PROJECT_DIR$/src/Modules/Flow/Controllers/Flow.php" />
-        <option value="$PROJECT_DIR$/bin/schema.xml" />
-        <option value="$PROJECT_DIR$/src/Helpers/AbstractController.php" />
-        <option value="$PROJECT_DIR$/src/Helpers/Authenticator.php" />
-        <option value="$PROJECT_DIR$/src/Helpers/Authenticator.php" />
-        <option value="$PROJECT_DIR$/src/Helpers/Menu.php" />
-        <option value="$PROJECT_DIR$/src/Templates/bp_home.twig" />
-        <option value="$PROJECT_DIR$/src/Templates/homepage.twig" />
-        <option value="$PROJECT_DIR$/src/Templates/notFound.twig" />
-        <option value="$PROJECT_DIR$/src/Templates/errorFound.twig" />
-        <option value="$PROJECT_DIR$/src/Modules/Homepage/Controllers/Homepage.php" />
         <option value="$PROJECT_DIR$/src/Helpers/constants.php" />
-        <option value="$PROJECT_DIR$/src/Helpers/Session.php" />
         <option value="$PROJECT_DIR$/src/Modules/BandPlaylist/Controllers/SetSpotifyDeviceId.php" />
-        <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/config/LocalConfig.php" />
-        <option value="$PROJECT_DIR$/src/Modules/BandPlaylist/Controllers/Verify.php" />
-        <option value="$PROJECT_DIR$/src/Modules/BandPlaylist/Controllers/BandPlaylist.php" />
         <option value="$PROJECT_DIR$/src/Helpers/SpotifyApi.php" />
-        <option value="$PROJECT_DIR$/src/Modules/BandPlaylist/Routes/routes.xml" />
         <option value="$PROJECT_DIR$/src/Modules/BandPlaylist/Controllers/Play.php" />
         <option value="$PROJECT_DIR$/src/Templates/accessDenied.twig" />
-        <option value="$PROJECT_DIR$/src/Helpers/SpotifyAuth.php" />
         <option value="$PROJECT_DIR$/src/Modules/Homepage/Controllers/PostCallTest.php" />
         <option value="$PROJECT_DIR$/src/Modules/Homepage/Routes/routes.xml" />
         <option value="$PROJECT_DIR$/src/Modules/Login/Routes/routes.xml" />
         <option value="$PROJECT_DIR$/src/Templates/bp_base.twig" />
         <option value="$PROJECT_DIR$/assets/js/bandplaylist.js" />
         <option value="$PROJECT_DIR$/src/Templates/infoView.twig" />
-        <option value="$PROJECT_DIR$/assets/css/tdew-custom.css" />
         <option value="$PROJECT_DIR$/src/Templates/login_modal.twig" />
         <option value="$PROJECT_DIR$/src/Templates/base.twig" />
-        <option value="$PROJECT_DIR$/src/Helpers/AutoRoute.php" />
-        <option value="$PROJECT_DIR$/src/Modules/BandPlaylist/Controllers/Overview.php" />
-        <option value="$PROJECT_DIR$/src/Templates/bp_overview.twig" />
         <option value="$PROJECT_DIR$/assets/css/uikit.css" />
         <option value="$PROJECT_DIR$/assets/css/uikit-rtl.css" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/src/Modules/Dynamics/Routes/routes.xml" />
+        <option value="$PROJECT_DIR$/src/Templates/dynamicBase.twig" />
+        <option value="$PROJECT_DIR$/src/Modules/Dynamics/Controllers/Dynamics.php" />
+        <option value="$PROJECT_DIR$/src/Helpers/dynamicHTML/HTMLElement.php" />
+        <option value="$PROJECT_DIR$/src/Helpers/dynamicHTML/HTMLCollection.php" />
+        <option value="$PROJECT_DIR$/src/Helpers/dynamicHTML/HTMLPage.php" />
+        <option value="$PROJECT_DIR$/src/Helpers/dynamicHTML/BasicHTMLPage.php" />
+        <option value="$PROJECT_DIR$/src/Helpers/dynamicHTML/AbstractHTMLElement.php" />
+        <option value="$PROJECT_DIR$/src/Helpers/dynamicHTML/MusicCard.php" />
+        <option value="$PROJECT_DIR$/src/Modules/Homepage/Controllers/Homepage.php" />
+        <option value="$PROJECT_DIR$/src/Modules/BandPlaylist/Controllers/Verify.php" />
+        <option value="$PROJECT_DIR$/src/Helpers/Authenticator.php" />
+        <option value="$PROJECT_DIR$/src/Helpers/AutoRoute.php" />
+        <option value="$PROJECT_DIR$/src/Helpers/Authenticator.php" />
+        <option value="$PROJECT_DIR$/src/Helpers/Session.php" />
+        <option value="$PROJECT_DIR$/src/Modules/BandPlaylist/Controllers/BandPlaylist.php" />
+        <option value="$PROJECT_DIR$/src/Helpers/Track.php" />
+        <option value="$PROJECT_DIR$/src/Helpers/AbstractHTMLItem.php" />
+        <option value="$PROJECT_DIR$/src/Modules/BandPlaylist/Helpers/CardContainer.php" />
+        <option value="$PROJECT_DIR$/src/Helpers/Canvas.php" />
+        <option value="$PROJECT_DIR$/src/Helpers/AbstractController.php" />
+        <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/src/Helpers/AbstractHTMLContainer.php" />
+        <option value="$PROJECT_DIR$/src/Templates/_cardContainer.html.twig" />
+        <option value="$PROJECT_DIR$/src/Helpers/SpotifyAuth.php" />
+        <option value="$PROJECT_DIR$/src/Modules/BandPlaylist/Controllers/Overview.php" />
+        <option value="$PROJECT_DIR$/bin/generated-classes/Track/Track.php" />
+        <option value="$PROJECT_DIR$/assets/css/tdew-custom.css" />
+        <option value="$PROJECT_DIR$/bin/schema.xml" />
+        <option value="$PROJECT_DIR$/src/Modules/BandPlaylist/Routes/routes.xml" />
+        <option value="$PROJECT_DIR$/src/Templates/_trackCard.html.twig" />
+        <option value="$PROJECT_DIR$/src/Modules/BandPlaylist/Helpers/TrackCard.php" />
+        <option value="$PROJECT_DIR$/src/Modules/BandPlaylist/Controllers/SetTrackLike.php" />
+        <option value="$PROJECT_DIR$/src/Templates/bp_overview.twig" />
       </list>
     </option>
   </component>
@@ -261,7 +264,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -272,12 +274,61 @@
             <path>
               <item name="tdewmain" type="b2602c69:ProjectViewProjectNode" />
               <item name="tdewmain" type="462c0819:PsiDirectoryNode" />
+              <item name="bin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tdewmain" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tdewmain" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tdewmain" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tdewmain" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Modules" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tdewmain" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tdewmain" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Modules" type="462c0819:PsiDirectoryNode" />
+              <item name="BandPlaylist" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tdewmain" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tdewmain" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Modules" type="462c0819:PsiDirectoryNode" />
+              <item name="BandPlaylist" type="462c0819:PsiDirectoryNode" />
+              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tdewmain" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tdewmain" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Modules" type="462c0819:PsiDirectoryNode" />
+              <item name="BandPlaylist" type="462c0819:PsiDirectoryNode" />
+              <item name="Helpers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tdewmain" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tdewmain" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Modules" type="462c0819:PsiDirectoryNode" />
+              <item name="BandPlaylist" type="462c0819:PsiDirectoryNode" />
+              <item name="Routes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tdewmain" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tdewmain" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Templates" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -297,19 +348,19 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\tdewmain\src\Modules\Dynamics\Routes" />
+      <recent name="C:\xampp\htdocs\tdewmain\src\Modules\Flow\Routes" />
+      <recent name="C:\xampp\htdocs\tdewmain\src\Modules\BandPlaylist\Routes" />
+      <recent name="C:\xampp\htdocs\tdewmain\images" />
+      <recent name="C:\xampp\htdocs\tdewmain\src\Modules\Register\Routes" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\tdewmain\config" />
       <recent name="C:\xampp\htdocs\tdewmain\src\Modules" />
       <recent name="C:\xampp\htdocs\tdewmain\bin\remote" />
       <recent name="C:\xampp\htdocs\tdewmain\src\Helpers" />
       <recent name="C:\xampp\htdocs\tdewmain\src\Templates" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\tdewmain\src\Modules\Flow\Routes" />
-      <recent name="C:\xampp\htdocs\tdewmain\src\Modules\BandPlaylist\Routes" />
-      <recent name="C:\xampp\htdocs\tdewmain\images" />
-      <recent name="C:\xampp\htdocs\tdewmain\src\Modules\Register\Routes" />
-      <recent name="C:\xampp\htdocs\tdewmain\src\Modules\PageNotFound" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -401,12 +452,32 @@
       <workItem from="1574851944982" duration="6086000" />
       <workItem from="1574859081929" duration="1313000" />
       <workItem from="1574873428474" duration="2832000" />
-      <workItem from="1574876285414" duration="439000" />
+      <workItem from="1574876285414" duration="1126000" />
+      <workItem from="1574897383538" duration="369000" />
+      <workItem from="1575045860412" duration="3701000" />
+      <workItem from="1575128518557" duration="183000" />
+      <workItem from="1575320075395" duration="1162000" />
+      <workItem from="1575468779924" duration="2787000" />
+      <workItem from="1575479795380" duration="746000" />
+      <workItem from="1575541292532" duration="7346000" />
+      <workItem from="1575560835696" duration="47000" />
+      <workItem from="1575629393777" duration="3368000" />
+      <workItem from="1575633508061" duration="358000" />
+      <workItem from="1575633943622" duration="19000" />
+      <workItem from="1575645819130" duration="84000" />
+      <workItem from="1575647102192" duration="631000" />
+      <workItem from="1575893390625" duration="17000" />
+      <workItem from="1575893705502" duration="11000" />
+      <workItem from="1576943595338" duration="654000" />
+      <workItem from="1577116800187" duration="1802000" />
+      <workItem from="1577201453377" duration="12618000" />
+      <workItem from="1577224942580" duration="1506000" />
+      <workItem from="1577293736852" duration="3792000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="271165000" />
+    <option name="totallyTimeSpent" value="313053000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -418,9 +489,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.35660982" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17590618" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -433,7 +505,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.32936078" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" weight="0.32936078" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -445,6 +517,22 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/assets/js/jquery.transit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="5" lean-forward="true" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Helpers/Menu.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -452,94 +540,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Helpers/Functions.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="45" lean-forward="true" selection-start-line="16" selection-start-column="44" selection-end-line="16" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/src/Session.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="7" lean-forward="true" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Templates/errorFound.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="10" lean-forward="true" selection-start-line="7" selection-start-column="10" selection-end-line="7" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/js/uikit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="3109" column="12" selection-start-line="3109" selection-start-column="12" selection-end-line="3109" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/composer.lock">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Modules/BandPlaylist/Controllers/Verify.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="38" column="14" lean-forward="true" selection-start-line="38" selection-start-column="14" selection-end-line="38" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/src/SpotifyWebAPI.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="6" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/schema.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="41" selection-start-line="9" selection-start-column="41" selection-end-line="9" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Helpers/SpotifyApi.php" />
-    <entry file="file://$PROJECT_DIR$/src/Modules/BandPlaylist/Routes/routes.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" column="11" lean-forward="true" selection-start-line="25" selection-start-column="11" selection-end-line="25" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Templates/notFound.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" selection-start-line="2" selection-end-line="12" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Templates/accessDenied.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Helpers/constants.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="48" selection-start-line="1" selection-start-column="22" selection-end-line="1" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Templates/homepage.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="40" selection-start-line="3" selection-start-column="40" selection-end-line="3" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Modules/Dynamics/Routes/routes.xml" />
     <entry file="file://$PROJECT_DIR$/src/Modules/Homepage/Routes/routes.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -547,162 +551,62 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Modules/Login/Routes/routes.xml">
+    <entry file="file://$PROJECT_DIR$/src/Templates/dynamicBase.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="12" lean-forward="true" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Helpers/SpotifyAuth.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="952">
-          <caret line="56" column="53" selection-start-line="56" selection-start-column="53" selection-end-line="56" selection-end-column="53" />
+        <state relative-caret-position="289">
+          <caret line="65" column="7" lean-forward="true" selection-start-line="65" selection-start-column="7" selection-end-line="65" selection-end-column="21" />
           <folding>
-            <element signature="e#39#71#0#PHP" expanded="true" />
+            <element signature="n#style#0;n#a#1;n#div#0;n#div#1;n#div#0;n#div#0;n#header#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/js/bandplaylist.js" />
-    <entry file="file://$PROJECT_DIR$/package.json" />
-    <entry file="file://$PROJECT_DIR$/src/Templates/infoView.twig">
+    <entry file="file://$PROJECT_DIR$/src/Helpers/dynamicHTML/BasicHTMLPage.php" />
+    <entry file="file://$PROJECT_DIR$/src/Helpers/dynamicHTML/HTMLCollection.php" />
+    <entry file="file://$PROJECT_DIR$/src/Helpers/dynamicHTML/AbstractHTMLElement.php" />
+    <entry file="file://$PROJECT_DIR$/src/Helpers/dynamicHTML/MusicCard.php" />
+    <entry file="file://$PROJECT_DIR$/src/Modules/Dynamics/Controllers/Dynamics.php" />
+    <entry file="file://$PROJECT_DIR$/vendor/bin/propel">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/src/SpotifyWebAPI.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="14" lean-forward="true" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
+        <state relative-caret-position="296">
+          <caret line="1370" column="20" selection-start-line="1370" selection-start-column="20" selection-end-line="1370" selection-end-column="20" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/css/tdew-custom.css">
+    <entry file="file://$PROJECT_DIR$/src/Helpers/UserSession.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="37" selection-start-line="20" selection-start-column="37" selection-end-line="20" selection-end-column="37" />
+        <state relative-caret-position="119">
+          <caret line="7" column="3" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Templates/login_modal.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="103" selection-start-column="103" selection-end-column="103" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/bin/propel.php">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Templates/base.twig">
+    <entry file="file://$PROJECT_DIR$/composer.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="31" selection-start-line="12" selection-start-column="31" selection-end-line="12" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Modules/BandPlaylist/Controllers/BandPlaylist.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="21" lean-forward="true" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
-          <folding>
-            <element signature="e#64#108#0#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="255">
+          <caret line="15" selection-start-line="15" selection-end-line="17" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Helpers/PageResponse.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Helpers/UserSession.php">
+    <entry file="file://$PROJECT_DIR$/.htaccess">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="12" lean-forward="true" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="12" />
+        <state relative-caret-position="102">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Modules/BandPlaylist/Controllers/Play.php">
+    <entry file="file://$PROJECT_DIR$/src/Modules/Login/Routes/routes.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="23" column="30" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Helpers/AutoRoute.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="33" column="19" selection-start-line="33" selection-start-column="19" selection-end-line="33" selection-end-column="19" />
-          <folding>
-            <element signature="e#40#76#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Modules/BandPlaylist/Controllers/SetSpotifyDeviceId.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="5" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
-          <folding>
-            <element signature="e#65#109#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Modules/Homepage/Controllers/Homepage.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="31" lean-forward="true" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
-          <folding>
-            <element signature="e#60#104#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Modules/Logout/Controllers/Logout.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Templates/bp_base.twig" />
-    <entry file="file://$PROJECT_DIR$/config/LocalConfig.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="47" lean-forward="true" selection-start-line="16" selection-start-column="47" selection-end-line="16" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Modules/Homepage/Controllers/PostCallTest.php" />
-    <entry file="file://$PROJECT_DIR$/src/Templates/bp_overview.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="833">
-          <caret line="129" column="25" lean-forward="true" selection-start-line="129" selection-start-column="25" selection-end-line="129" selection-end-column="25" />
-          <folding>
-            <element signature="n#style#0;n#i#0;n#span#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#body#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Modules/Login/Controllers/Login.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Helpers/Session.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-408">
-          <caret line="16" column="37" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
-          <folding>
-            <element signature="e#27#64#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Modules/BandPlaylist/Controllers/Overview.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" column="52" selection-start-line="26" selection-start-column="52" selection-end-line="26" selection-end-column="52" />
-          <folding>
-            <element signature="e#64#108#0#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="221">
+          <caret line="13" column="9" selection-start-line="13" selection-start-column="9" selection-end-line="13" selection-end-column="9" />
         </state>
       </provider>
     </entry>
@@ -713,59 +617,227 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Templates/base.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="37" column="51" selection-start-line="37" selection-start-column="51" selection-end-line="37" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Views/ErrorFound.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Templates/errorFound.twig">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/.htaccess">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="13" selection-start-column="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Modules/Homepage/Controllers/Homepage.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+          <folding>
+            <element signature="e#60#104#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Helpers/constants.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="14" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/LocalConfig.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="7" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Helpers/Authenticator.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="19" column="31" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="31" />
+        <state relative-caret-position="673">
+          <caret line="83" column="18" selection-start-line="83" selection-start-column="18" selection-end-line="83" selection-end-column="18" />
           <folding>
             <element signature="e#39#83#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Helpers/Token.php">
+    <entry file="file://$PROJECT_DIR$/src/Helpers/Session.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="33" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
+        <state relative-caret-position="85">
+          <caret line="5" column="3" lean-forward="true" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/css/uikit.css" />
-    <entry file="file://$PROJECT_DIR$/assets/css/uikit-rtl.css" />
-    <entry file="file://$PROJECT_DIR$/assets/css/uikit.min.css" />
-    <entry file="file://$PROJECT_DIR$/assets/js/jquery.transit.js">
+    <entry file="file://$PROJECT_DIR$/src/Helpers/AutoRoute.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
+        <state relative-caret-position="221">
+          <caret line="30" column="5" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#40#76#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/.htaccess">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
+    <entry file="file://$PROJECT_DIR$/src/Modules/BandPlaylist/Controllers/BandPlaylist.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="5" lean-forward="true" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="5" />
+        <state relative-caret-position="102">
+          <caret line="6" column="38" lean-forward="true" selection-start-line="6" selection-start-column="38" selection-end-line="6" selection-end-column="38" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.htaccess">
+    <entry file="file://$PROJECT_DIR$/src/Helpers/Track.php" />
+    <entry file="file://$PROJECT_DIR$/src/Helpers/Canvas.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="31" selection-start-line="3" selection-start-column="31" selection-end-line="3" selection-end-column="35" />
+        <state relative-caret-position="510">
+          <caret line="30" column="5" lean-forward="true" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Helpers/AbstractController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="12" column="15" selection-start-line="12" selection-start-column="15" selection-end-line="12" selection-end-column="15" />
+        <state relative-caret-position="282">
+          <caret line="25" column="7" lean-forward="true" selection-start-line="25" selection-start-column="7" selection-end-line="25" selection-end-column="7" />
           <folding>
             <element signature="e#40#72#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="473">
+          <caret line="59" column="20" lean-forward="true" selection-start-line="59" selection-start-column="20" selection-end-line="59" selection-end-column="20" />
+          <folding>
+            <element signature="e#27#64#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Modules/BandPlaylist/Helpers/CardContainer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="39" selection-start-line="11" selection-start-column="39" selection-end-line="11" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Helpers/AbstractHTMLContainer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="31" lean-forward="true" selection-start-line="23" selection-start-column="31" selection-end-line="23" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Helpers/SpotifyAuth.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="898">
+          <caret line="83" column="32" selection-start-line="83" selection-start-column="32" selection-end-line="83" selection-end-column="32" />
+          <folding>
+            <element signature="e#39#71#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Modules/BandPlaylist/Controllers/Overview.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="37" column="9" selection-start-line="37" selection-start-column="9" selection-end-line="37" selection-end-column="9" />
+          <folding>
+            <element signature="e#64#85#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Modules/BandPlaylist/Controllers/Verify.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="235">
+          <caret line="35" column="20" selection-start-line="35" selection-start-column="20" selection-end-line="35" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Templates/_cardContainer.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="6" lean-forward="true" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/css/tdew-custom.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="1" lean-forward="true" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Helpers/AbstractHTMLItem.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="15" selection-start-line="11" selection-start-column="15" selection-end-line="11" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/generated-classes/Track/Track.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="18" column="6" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/schema.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="33" column="59" lean-forward="true" selection-start-line="33" selection-start-column="59" selection-end-line="33" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Modules/BandPlaylist/Routes/routes.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" column="28" lean-forward="true" selection-start-line="26" selection-start-column="28" selection-end-line="26" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Modules/BandPlaylist/Helpers/TrackCard.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="19" column="18" lean-forward="true" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
+          <folding>
+            <element signature="e#60#102#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Modules/BandPlaylist/Controllers/SetTrackLike.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="33" column="22" selection-start-line="33" selection-start-column="22" selection-end-line="33" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Templates/_trackCard.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="18" lean-forward="true" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
+          <folding>
+            <element signature="n#style#0;n#i#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#1;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Templates/bp_overview.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="49" column="45" lean-forward="true" selection-start-line="49" selection-start-column="45" selection-end-line="49" selection-end-column="45" />
         </state>
       </provider>
     </entry>

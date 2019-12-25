@@ -1,10 +1,13 @@
 <?php
 namespace tdewmain\src\Modules\BandPlaylist\Controllers;
 
+use Likes\LikesQuery;
 use tdewmain\src\Helpers\AbstractController;
 use tdewmain\src\Helpers\Authenticator;
 use tdewmain\src\Helpers\PageResponse;
 use tdewmain\src\Helpers\SpotifyAuth;
+use tdewmain\src\Modules\BandPlaylist\Helpers\CardContainer;
+use tdewmain\src\Modules\BandPlaylist\Helpers\TrackCard;
 
 /**
  * Class Overview
@@ -13,32 +16,29 @@ use tdewmain\src\Helpers\SpotifyAuth;
  */
 class Overview extends AbstractController
 {
-
     /**
      * @return PageResponse
      */
     public function show(): PageResponse
     {
+        $canvas = $this->canvas;
+
         $data = [];
         $user = Authenticator::getUser();
         $api = SpotifyAuth::api($user);
 
+        $results = $api->search('bee gees', 'track');
 
-        $results = $api->search('if you leave me now', 'track');
+        $container = new CardContainer();
 
-
-        foreach ($results->tracks->items as $track) {
-            $data['temp'][] = [
-                'name' => $track->name,
-                'artist' => $track->album->artists[0]->name,
-                'img_url' => $track->album->images[0]->url,
-                'uri' => $track->uri,
-                'duration_ms' => $track->duration_ms
-            ];
+        foreach ($results->tracks->items as $spotifyApiTrack) {
+            $container->add(
+                new TrackCard(SpotifyAuth::getTrack($spotifyApiTrack))
+            );
         }
 
+        $canvas->add($container);
         $data['spotifyAccessToken'] = $user->getSpotifyAccessToken();
-
 
         return new PageResponse('bp_overview.twig', $data);
     }

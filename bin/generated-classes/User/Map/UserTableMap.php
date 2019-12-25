@@ -125,6 +125,7 @@ class UserTableMap extends TableMap
     const COL_PERMISSIONS_GUEST = 'guest';
     const COL_PERMISSIONS_USER = 'user';
     const COL_PERMISSIONS_ADMIN = 'admin';
+    const COL_PERMISSIONS_SPOTIFY = 'spotify';
 
     /**
      * holds an array of fieldnames
@@ -160,6 +161,7 @@ class UserTableMap extends TableMap
                             self::COL_PERMISSIONS_GUEST,
             self::COL_PERMISSIONS_USER,
             self::COL_PERMISSIONS_ADMIN,
+            self::COL_PERMISSIONS_SPOTIFY,
         ),
     );
 
@@ -210,6 +212,7 @@ class UserTableMap extends TableMap
   0 => 'guest',
   1 => 'user',
   2 => 'admin',
+  3 => 'spotify',
 ));
         $this->addColumn('spotify_access_token', 'SpotifyAccessToken', 'VARCHAR', false, 255, null);
         $this->addColumn('spotify_refresh_token', 'SpotifyRefreshToken', 'VARCHAR', false, 255, null);

@@ -3,13 +3,13 @@
         <method>GET</method>
         <route>/BandPlaylist</route>
         <controller>\tdewmain\src\Modules\BandPlaylist\Controllers\BandPlaylist</controller>
-        <permissions>user</permissions>
+        <permissions>guest</permissions>
     </route>
     <route>
         <method>GET</method>
         <route>/BandPlaylist/Verify</route>
         <controller>\tdewmain\src\Modules\BandPlaylist\Controllers\Verify</controller>
-        <permissions>user</permissions>
+        <permissions>guest</permissions>
     </route>
     <route>
         <method>GET</method>
@@ -27,6 +27,12 @@
         <method>GET</method>
         <route>/BandPlaylist/Play/[*:track_uri]</route>
         <controller>\tdewmain\src\Modules\BandPlaylist\Controllers\Play</controller>
+        <permissions>user</permissions>
+    </route>
+    <route>
+        <method>GET</method>
+        <route>/BandPlaylist/Like/[*:track_id]/[*:like_type]</route>
+        <controller>\tdewmain\src\Modules\BandPlaylist\Controllers\SetTrackLike</controller>
         <permissions>user</permissions>
     </route>
 </routes>

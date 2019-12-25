@@ -40,5 +40,64 @@ CREATE TABLE `session_lock`
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB;
 
+-- ---------------------------------------------------------------------
+-- band
+-- ---------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `band`;
+
+CREATE TABLE `band`
+(
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `band_name` VARCHAR(255) NOT NULL,
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB;
+
+-- ---------------------------------------------------------------------
+-- band_to_user
+-- ---------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `band_to_user`;
+
+CREATE TABLE `band_to_user`
+(
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `user` INTEGER NOT NULL,
+    `band` INTEGER NOT NULL,
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB;
+
+-- ---------------------------------------------------------------------
+-- track
+-- ---------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `track`;
+
+CREATE TABLE `track`
+(
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `name` VARCHAR(255),
+    `artist` VARCHAR(255),
+    `image` VARCHAR(255),
+    `trackUri` VARCHAR(255),
+    `duration` VARCHAR(255),
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB;
+
+-- ---------------------------------------------------------------------
+-- Likes
+-- ---------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `Likes`;
+
+CREATE TABLE `Likes`
+(
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `user` INTEGER NOT NULL,
+    `track` INTEGER NOT NULL,
+    `type` TINYINT DEFAULT 0 NOT NULL,
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB;
+
 # This restores the fkey checks, after having unset them earlier
 SET FOREIGN_KEY_CHECKS = 1;

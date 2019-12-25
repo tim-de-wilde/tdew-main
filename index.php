@@ -57,11 +57,15 @@ try {
 
     $twigLoader = new FilesystemLoader(__DIR__ . '/src/Templates');
     $twig = new Environment(
-        $twigLoader
+        $twigLoader,
 //    [
 //        'cache' => __DIR__ . '/src/Templates/compilation_cache'
 //    ]
+    [
+        'debug' => true
+        ]
     );
+    $twig->addExtension(new \Twig\Extension\DebugExtension());
 
     LocalConfig::setTwigEnvironment($twig);
 

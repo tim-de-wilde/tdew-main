@@ -5,6 +5,8 @@ use SpotifyWebAPI\SpotifyWebAPI;
 use SpotifyWebAPI\SpotifyWebAPIException;
 use tdewmain\config\LocalConfig;
 use \SpotifyWebAPI\Session as SpotifySession;
+use Track\Track;
+use Track\TrackQuery;
 use User\User;
 
 /**
@@ -64,6 +66,26 @@ class SpotifyAuth
 
         $api->setAccessToken($token);
         return $api;
+    }
+
+    /**
+     * @param $spotifyApiTrack
+     *
+     * @return Track
+     */
+    public static function getTrack($spotifyApiTrack): Track
+    {
+        $track = TrackQuery::create()
+            ->filterByTrackuri($spotifyApiTrack->uri)
+            ->filterByName($spotifyApiTrack->name)
+            ->filterByArtist($spotifyApiTrack->album->artists[0]->name)
+            ->filterByImage($spotifyApiTrack->album->images[0]->url)
+            ->filterByDuration($spotifyApiTrack->duration_ms)
+            ->findOneOrCreate();
+
+        $track->save();
+
+        return $track;
     }
 
 

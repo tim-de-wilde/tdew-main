@@ -13,8 +13,8 @@ class Session
     public static function create(): void
     {
         session_start();
-        if (!array_key_exists('id', $_SESSION)) {
-            $_SESSION['id'] = Token::generateToken();
+        if (!\array_key_exists('token', $_SESSION)) {
+            $_SESSION['token'] = Token::generateToken();
             $_SESSION['login_attempts'] = 0;
             $_SESSION['spotify_device_id'] = '';
         }

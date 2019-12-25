@@ -6,6 +6,7 @@ use tdewmain\src\Helpers\Authenticator;
 use tdewmain\src\Helpers\Functions;
 use tdewmain\src\Helpers\PageResponse;
 use tdewmain\src\Helpers\SpotifyAuth;
+use User\User;
 
 /**
  * Class BandPlaylist
@@ -19,21 +20,13 @@ class BandPlaylist extends AbstractController
      */
     public function show(): PageResponse
     {
-        $pageVars = $this->pageVars;
+        $user = Authenticator::getUserNoError();
 
-        $user = Authenticator::getUser();
-        $session = SpotifyAuth::getSession();
-
-        if (SpotifyAuth::tokenIsValid($user)) {
+        if (($user instanceof User) &&
+        SpotifyAuth::tokenIsValid($user)) {
             Functions::internRedirect('BandPlaylist/Overview');
-        } elseif (array_key_exists('code', $pageVars) &&
-            $session->requestAccessToken($pageVars['code'])) {
-                $user->setSpotifyAccessToken($session->getAccessToken());
-                $user->setSpotifyRefreshToken($session->getRefreshToken());
-                $user->save();
-
-                header('Refresh:0');
         }
+
 
         return new PageResponse('bp_home.twig', []);
     }

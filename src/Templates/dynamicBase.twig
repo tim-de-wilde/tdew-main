@@ -1,0 +1,152 @@
+<html>
+<head>
+    {% block title %}
+        <title>tdew</title>
+    {% endblock %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ ROOT }}/assets/css/tdew-custom.css">
+
+    <link rel="stylesheet" href="{{ ROOT }}/uikit/dist/css/uikit.min.css" />
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+
+    <script src="{{ ROOT }}/uikit/dist/js/uikit.min.js"></script>
+    <script src="{{ ROOT }}/uikit/dist/js/uikit-icons.min.js"></script>
+
+</head>
+<header>
+    {% block header %}
+        <div class="uk-light" id="nav-bar-container">
+            <div id="nav-bar" class="uk-navbar uk-navbar-container uk-padding-remove" style="background-color: #222222">
+                <div class="uk-navbar-left">
+                    <a class="uk-navbar-item uk-logo" href="{{ ROOT }}" style="color: #ffffff; font-size: 15pt">tdew</a>
+                </div>
+
+                <div class="uk-navbar-center" style="color: white">
+                    <div tabindex="-1" uk-slider>
+                        <div class="uk-slider-container">
+                            <ul class="uk-slider-items">
+                                {% for item in menu_items %}
+                                    {% if item.condition == true or item.condition == 'none' %}
+                                        <li>
+                                            <a href="{{ item.link }}" style="color: white;">
+                                                <span class="uk-icon uk-margin-small-right" uk-icon="icon: {{ item.icon }}; ratio: 2"></span>
+                                            </a>
+                                        </li>
+                                    {% endif %}
+                                {% endfor %}
+
+                                {% if not logged_in %}
+                                    <li>
+                                        <a href="#" uk-toggle="target: #login" style="color: white;">
+                                            <span class="uk-icon uk-margin-small-right" uk-icon="icon: sign-in; ratio: 2"></span>
+                                        </a>
+                                    </li>
+
+                                    <div id="login" class="uk-dark" uk-modal>
+                                        {% include 'login_modal.twig' %}
+                                    </div>
+                                {% endif %}
+                            </ul>
+                        </div>
+
+                        <a style="color: white" class="uk-position-center-left-out" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
+                        <a style="color: white" class="uk-position-center-right-out" href="#" uk-slidenav-next uk-slider-item="next"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    {% endblock %}
+</header>
+{% block content %}
+    <body>
+    {{ dynamicContent | raw }}
+    </body>
+{% endblock %}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="{{ ROOT }}/assets/js/jquery.transit.js"></script>
+
+<script>
+    $('#login-button').on('click', function () {
+        let name = $('input#username');
+        let pass = $('input#pass');
+
+        let dataString = 'name=' + name.val() + '&pass=' + pass.val();
+
+        $.ajax({
+            type: 'POST',
+            url: '/tdewmain/Login',
+            data: dataString,
+            success: function (data) {
+                if (data === 'true') {
+                    location.reload();
+                } else if (data === 'max_attempts') {
+                    $('#too-many-attempts-alert').removeClass('uk-hidden');
+                    setTimeout(function () {
+                        $('#too-many-attempts-alert').addClass('uk-hidden');
+                    }, 10000)
+                } else {
+                    pass.addClass('uk-form-danger');
+                    pass.addClass('uk-animation-shake');
+                    setTimeout(function () {
+                        pass.removeClass('uk-animation-shake');
+                    }, 300);
+                }
+            }
+        });
+        return false;
+    });
+
+    $('#register-button').on('click', function () {
+
+        let registerAlert = $('#register-alert');
+        let registerAlertText = $('#register-alert-text');
+
+        let name = $('input#register-username');
+        let pass = $('input#register-pass');
+        let pass2 = $('input#register-pass2');
+        let email = $('input#register-email');
+
+        if (pass.val() !== pass2.val()) {
+            pass.addClass('uk-form-danger');
+            pass.addClass('uk-animation-shake');
+            setTimeout(function () {
+                pass.removeClass('uk-animation-shake');
+            }, 300);
+
+            pass2.addClass('uk-form-danger');
+            pass2.addClass('uk-animation-shake');
+            setTimeout(function () {
+                pass.removeClass('uk-animation-shake');
+            }, 300);
+        } else {
+            let dataString = 'register-name=' + name.val() + '&register-pass=' + pass.val() + '&register-email=' + email.val();
+
+            $.ajax({
+                type: 'POST',
+                url: '/tdewmain/Login/Register',
+                data: dataString,
+                success: function (data) {
+                    if (data === 'true') {
+                        location.reload()
+                    } else {
+                        registerAlertText.innerHTML = data;
+                        registerAlert.removeClass('uk-hidden');
+                        setTimeout(function () {
+                            registerAlert.addClass('uk-hidden');
+                        }, 5000);
+                    }
+                }
+            });
+        }
+        return false;
+    });
+</script>
+
+{% block script %}
+{% endblock %}
+</html>

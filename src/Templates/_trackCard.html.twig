@@ -1,0 +1,36 @@
+<div>
+    <div class="uk-inline-clip uk-transition-toggle uk-light" tabindex="0">
+        <div class="uk-card uk-card-default uk-card-small uk-background-secondary">
+            <div class="uk-card-body uk-padding-remove" style="user-select: none">
+                <div class="uk-grid-small uk-flex-middle"
+                     uk-grid>
+                    <div class="uk-width-auto">
+                        <img class="" width="130"
+                             height="130"
+                             src="{{ card.image }}">
+                    </div>
+                    <div class="uk-width-expand">
+                        <p class="uk-card-title uk-margin-remove-bottom" style="color: #FDFDFD">{{ card.name }}</p>
+                        <p class="uk-text-meta uk-margin-remove-top uk-text-middle" style="color: #c4c4c4">{{ card.artist }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="uk-transition-fade uk-position-cover uk-overlay uk-overlay-primary uk-dark">
+            <div class="uk-grid-small uk-flex uk-flex-center" style="user-select: none" uk-grid>
+                <div class="uk-width-1-5 uk-flex">
+                    <span class="play-button uk-margin-auto-vertical" style="cursor: pointer" track_uri="{{ card.trackUri }}">
+                        <i class="material-icons" id="icon" style="font-size: 65px">play_arrow</i>
+                    </span>
+                </div>
+                <div class="uk-width-4-5 uk-flex" id="rangeDiv">
+                    <input type="range" id="range" value="0" class="uk-range uk-margin-auto-vertical" max="{{ card.duration / 1000 }}"/>
+                    <div class="uk-position-bottom-right uk-margin-small-right" track_id="{{ card.id }}">
+                        <i class="material-icons like" like_type="like" style="font-size: 30px; cursor: pointer;">thumb_up</i>
+                        <i class="material-icons like" like_type="dislike" style="font-size: 30px; cursor: pointer;">thumb_down</i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

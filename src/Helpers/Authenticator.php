@@ -63,7 +63,7 @@ class Authenticator
     public static function login(String $username, String $password): bool
     {
         if (static::checkCredentials($username, $password)) {
-            static::createSession($username);
+            static::createUserSession($username);
             return true;
         }
         return false;
@@ -85,7 +85,7 @@ class Authenticator
      */
     public static function loggedIn() : bool
     {
-        return !empty($_SESSION['token']) && !empty($_SESSION['username']);
+        return !empty($_SESSION['username']);
     }
 
     public static function breakSession() : void
@@ -111,6 +111,14 @@ class Authenticator
     }
 
     /**
+     * @param User $user
+     */
+    public static function setUser(User $user): void
+    {
+        $_SESSION['username'] = $user->getUsername();
+    }
+
+    /**
      * @param String $username
      * @param String $password
      *
@@ -133,32 +141,12 @@ class Authenticator
      *
      * @return void
      */
-    private static function createSession(String $username): void
+    private static function createUserSession(String $username): void
     {
         if (!static::loggedIn()) {
             $_SESSION['username'] = $username;
-            $_SESSION['token'] = 'test';
             return;
         }
         throw new LogicException('Trying to create session while a session is still active');
-    }
-
-    /**
-     * @param String $token
-     */
-    public static function setSpotifySessionToken(String $token): void
-    {
-        $_SESSION['spotify_user_token'] = $token;
-    }
-
-    /**
-     * @return String|null
-     */
-    public static function getSpotifySessionToken(): ?String
-    {
-        if (\array_key_exists('spotify_user_token', $_SESSION)) {
-            return $_SESSION['spotify_user_token'];
-        }
-        return null;
     }
 }

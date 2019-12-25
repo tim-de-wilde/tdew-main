@@ -12,7 +12,16 @@ use Twig\Environment;
  */
 abstract class AbstractController
 {
+    /**@var array $pageVars**/
     public $pageVars;
+
+    /**@var Canvas $canvas**/
+    public $canvas;
+
+    public function __construct()
+    {
+        $this->canvas = new Canvas();
+    }
 
     /**
      * @return PageResponse
@@ -34,7 +43,7 @@ abstract class AbstractController
                     'breadcrumbs' => $this->getBreadcrumb(),
                     'menu_items' => Menu::getItems(),
                     'logged_in' => Authenticator::loggedIn(),
-                    'user' => Authenticator::getUserArray(),
+                    'canvas' => $this->canvas,
                     'ROOT' => LOCAL_ROOT
                 ]
             )
