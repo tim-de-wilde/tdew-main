@@ -8,8 +8,8 @@ namespace tdewmain\src\Helpers;
  */
 class PageResponse
 {
-    private $twig;
-    private $variables;
+    private String $twig;
+    private array $variables;
 
     /**
      * AbstractResponse constructor.
@@ -17,10 +17,10 @@ class PageResponse
      * @param String $twig
      * @param array  $variables
      */
-    public function __construct(String $twig, array $variables)
+    public function __construct(String $twig, array $variables = null)
     {
         $this->twig = $twig;
-        $this->variables = $variables;
+        $this->variables = $variables ?? [];
     }
 
     /**

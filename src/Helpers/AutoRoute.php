@@ -31,7 +31,9 @@ class AutoRoute
     {
         $modules = glob(__DIR__ . '/../Modules/*', GLOB_ONLYDIR);
         foreach ($modules as $module) {
-            $xml = simplexml_load_file("$module/Routes/routes.xml");
+            $xml = simplexml_load_string(
+                file_get_contents("$module/Routes/routes.xml")
+            );
 
             foreach ($xml->route as $route) {
                 $arr = (array)$route;

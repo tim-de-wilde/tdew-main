@@ -35,5 +35,17 @@
         <controller>\tdewmain\src\Modules\BandPlaylist\Controllers\SetTrackLike</controller>
         <permissions>user</permissions>
     </route>
+    <route>
+        <method>GET</method>
+        <route>/BandPlaylist/BestTracks</route>
+        <controller>\tdewmain\src\Modules\BandPlaylist\Controllers\BestTracks</controller>
+        <permissions>user</permissions>
+    </route>
+    <route>
+        <method>GET</method>
+        <route>/BandPlaylist/Test</route>
+        <controller>\tdewmain\src\Modules\BandPlaylist\Controllers\Test</controller>
+        <permissions>guest</permissions>
+    </route>
 </routes>
 

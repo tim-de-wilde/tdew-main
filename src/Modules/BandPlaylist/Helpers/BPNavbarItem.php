@@ -1,25 +1,28 @@
 <?php
+
+
 namespace tdewmain\src\Modules\BandPlaylist\Helpers;
+
 
 use tdewmain\src\Helpers\AbstractHTMLItem;
 
 /**
- * Class CardContainer
+ * Class BPNavbarItem
  *
  * @package tdewmain\src\Modules\BandPlaylist\Helpers
  */
-class CardContainer extends AbstractHTMLItem
+class BPNavbarItem extends AbstractHTMLItem
 {
-    public $gridDivide;
+    public $name;
 
     /**
-     * CardContainer constructor.
+     * BPNavbarItem constructor.
      *
-     * @param int $gridDivide
+     * @param String $name
      */
-    public function __construct(int $gridDivide)
+    public function __construct(String $name)
     {
-        $this->gridDivide = $gridDivide;
+        $this->name = $name;
 
         parent::__construct();
     }
@@ -29,6 +32,6 @@ class CardContainer extends AbstractHTMLItem
      */
     public function template(): String
     {
-        return '_cardContainer.html.twig';
+        return '_bp_navbar_item.html.twig';
     }
 }

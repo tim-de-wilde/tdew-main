@@ -1,4 +1,4 @@
-<div class="uk-child-width-1-2@s uk-grid uk-grid-match uk-grid-small uk-margin-medium-bottom" uk-grid>
+<div class="uk-child-width-1-{{ item.gridDivide }}@s uk-grid uk-grid-match uk-grid-small uk-margin-medium-bottom" uk-grid>
     {% for card in item.items %}
         {% include card.template %}
     {% endfor %}

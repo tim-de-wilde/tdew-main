@@ -12,6 +12,10 @@
         "twig/twig": "^2.0",
         "jwilsson/spotify-web-api-php": "^2.10",
         "sentry/sdk": "2.0.3"
+    }
+    ,
+    "require-dev": {
+        "roave/security-advisories": "dev-master"
     },
     "autoload": {
         "classmap": ["src/", "bin/generated-classes/"]

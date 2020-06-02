@@ -1,6 +1,8 @@
 <?php
 namespace tdewmain\src\Helpers;
 
+use Band;
+use BandQuery;
 use SessionLock\SessionLockQuery;
 
 /**
@@ -34,6 +36,17 @@ class Session
 
         $lock->setExpires($expireDate->getTimestamp());
         $lock->save();
+    }
+
+    /**
+     * @return Band|null
+     */
+    public static function getSelectedBand(): ?Band
+    {
+        $bandId = $_SESSION['band_id'];
+
+        return BandQuery::create()
+            ->findOneById($bandId);
     }
 
     /**

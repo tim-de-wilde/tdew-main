@@ -3,30 +3,6 @@
 {% block content %}
     <body class="uk-background-secondary">
         <div class="uk-container uk-container-medium uk-background-secondary">
-
-                <div>
-                    <div class="uk-grid uk-grid-medium uk-text-left" uk-grid>
-                        <div>
-                            <h2 class="uk-text-bold uk-margin-remove tdw-nav-header-unselect">
-                                My Band
-                            </h2>
-                        </div>
-                        <div>
-                            <h2 class="uk-text-bold uk-margin-remove uk-text-capitalize tdw-nav-header-unselect" style="color: white; font-size: 30pt; user-select: none">
-                                Suggestions
-                            </h2>
-                        </div>
-                        <div>
-                            <h2 class="uk-text-bold uk-margin-remove uk-text-capitalize tdw-nav-header-unselect" style="color: white; font-size: 30pt; user-select: none;">
-                                Best Tracks
-                            </h2>
-                        </div>
-                    </div>
-                </div>
-
-            <hr>
-            <div class="uk-margin-medium"></div>
-
             {% for item in canvas.items %}
                 {% include item.template %}
             {% endfor %}
@@ -53,17 +29,40 @@
 
                 player.connect();
 
-                $('.like').on('click', function () {
-                    let type = $(this).prop('like_type');
-                    let state = $(this).prop('state');
+                //prefill like colours & state
+                $('.like-container').each(function () {
+                    let preset = $(this).attr('preset');
 
+                    if (preset) {
+                        $(this).children().each(function () {
+                            if ($(this).attr('like_type') === preset) {
+                                let proper_color = $(this).attr('proper_color');
+                                $(this).css('color', proper_color);
+                                $(this).attr('state', 'enabled');
+                            }
+                        })
+                    }
+                });
+
+                $('.like').on('click', function () {
+                    let type = $(this).attr('like_type');
+                    let state = $(this).attr('state');
                     let trackId = $(this).parent().attr('track_id');
 
-                    if (state === 'disabled') {
-                        $(this).prop('state', 'enabled');
+                    let sibling = $(this).siblings().first();
+
+                    if (state === undefined || state === 'disabled') {
+                        $(this).attr('state', 'enabled');
+
+                        let color = $(this).attr('proper_color');
+
+                        $(this).css('color', color);
+                        sibling.css('color', 'rgba(255, 255, 255, 0.7)');
+                        sibling.attr('state', 'disabled');
                     } else {
-                        $(this).prop('state', 'disabled');
+                        $(this).attr('state', 'disabled');
                         type = 'neutral';
+                        $(this).css('color', 'rgba(255, 255, 255, 0.7)');
                     }
 
                     $.ajax({

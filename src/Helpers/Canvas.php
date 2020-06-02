@@ -7,36 +7,13 @@ namespace tdewmain\src\Helpers;
  *
  * @package tdewmain\src\Helpers
  */
-class Canvas
+class Canvas extends AbstractHTMLItem
 {
-    /**@var AbstractHTMLItem[] $items**/
-    protected $items;
-
     /**
-     * @param AbstractHTMLItem $item
-     *
-     * @return Canvas
+     * @return String
      */
-    public function add(AbstractHTMLItem $item): Canvas
+    public function template(): String
     {
-        $this->items[] = $item;
-
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getItems()
-    {
-        return $this->items;
-    }
-
-    /**
-     * @param mixed $items
-     */
-    public function setItems($items): void
-    {
-        $this->items = $items;
+        return '';
     }
 }

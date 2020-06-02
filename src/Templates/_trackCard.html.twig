@@ -25,9 +25,9 @@
                 </div>
                 <div class="uk-width-4-5 uk-flex" id="rangeDiv">
                     <input type="range" id="range" value="0" class="uk-range uk-margin-auto-vertical" max="{{ card.duration / 1000 }}"/>
-                    <div class="uk-position-bottom-right uk-margin-small-right" track_id="{{ card.id }}">
-                        <i class="material-icons like" like_type="like" style="font-size: 30px; cursor: pointer;">thumb_up</i>
-                        <i class="material-icons like" like_type="dislike" style="font-size: 30px; cursor: pointer;">thumb_down</i>
+                    <div class="uk-position-bottom-right uk-margin-small-right like-container" track_id="{{ card.id }}" preset="{{ card.like }}">
+                        <i class="material-icons like" like_type="like" proper_color="#12d600" style="font-size: 30px; cursor: pointer;">thumb_up</i>
+                        <i class="material-icons like" like_type="dislike" proper_color="#d60000" style="font-size: 30px; cursor: pointer;">thumb_down</i>
                     </div>
                 </div>
             </div>

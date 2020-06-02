@@ -1,0 +1,29 @@
+{% extends 'base.twig' %}
+
+{% block content %}
+    <body class="bg-primary">
+        <div class="uk-container">
+            <div uk-grid>
+                <div class="uk-width-1-3@l uk-width-4-5">
+                    <div class="uk-inline uk-width-1-1">
+                        <span class="uk-form-icon" uk-icon="icon: search"></span>
+                        <input class="b-radius-medium color-grey-1 uk-input" type="text" placeholder="Search a track...">
+                    </div>
+                </div>
+                <div class="uk-width-expand">
+                    <i class="material-icons color-grey-2 uk-align-right" id="icon" style="font-size: 40px; cursor:pointer;">clear</i>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="uk-child-width-1-1 uk-grid uk-grid-match uk-grid-small uk-margin-medium-bottom padding-side-medium" uk-grid>
+                {% for card in results %}
+                    {% include '@components/TrackCard/search_track_card.twig' %}
+                {% endfor %}
+            </div>
+        </div>
+
+        <script src="{{ ROOT }}/assets/js/search.js"></script>
+    </body>
+{% endblock %}

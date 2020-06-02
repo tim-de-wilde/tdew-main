@@ -1,6 +1,7 @@
 <?php
 namespace tdewmain\src\Modules\BandPlaylist\Helpers;
 
+use Band;
 use tdewmain\src\Helpers\AbstractHTMLItem;
 use tdewmain\src\Helpers\Authenticator;
 use Track\Track;
@@ -26,8 +27,11 @@ class TrackCard extends AbstractHTMLItem
      * TrackCard constructor.
      *
      * @param Track $track
+     * @param Band  $currentBand
+     *
+     * @throws \Propel\Runtime\Exception\PropelException
      */
-    public function __construct(Track $track)
+    public function __construct(Track $track, Band $currentBand)
     {
         $this->id = $track->getId();
         $this->name = $track->getName();
@@ -35,7 +39,14 @@ class TrackCard extends AbstractHTMLItem
         $this->image = $track->getImage();
         $this->trackUri = $track->getTrackuri();
         $this->duration = $track->getDuration();
-        $this->like = $track->getLikeByUser(Authenticator::getUser());
+
+        $like = $track->getLikeByUser(Authenticator::getUser(), $currentBand);
+
+        if ($like !== null) {
+            $like = $like->getType();
+        }
+
+        $this->like = $like;
 
         parent::__construct();
     }

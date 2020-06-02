@@ -50,6 +50,7 @@ CREATE TABLE `band`
 (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `band_name` VARCHAR(255) NOT NULL,
+    `image` VARCHAR(255) NOT NULL,
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB;
 
@@ -85,16 +86,31 @@ CREATE TABLE `track`
 ) ENGINE=InnoDB;
 
 -- ---------------------------------------------------------------------
--- Likes
+-- track_to_band
 -- ---------------------------------------------------------------------
 
-DROP TABLE IF EXISTS `Likes`;
+DROP TABLE IF EXISTS `track_to_band`;
 
-CREATE TABLE `Likes`
+CREATE TABLE `track_to_band`
+(
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `track` INTEGER NOT NULL,
+    `band` INTEGER NOT NULL,
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB;
+
+-- ---------------------------------------------------------------------
+-- likes
+-- ---------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `likes`;
+
+CREATE TABLE `likes`
 (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `user` INTEGER NOT NULL,
     `track` INTEGER NOT NULL,
+    `band` INTEGER NOT NULL,
     `type` TINYINT DEFAULT 0 NOT NULL,
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB;

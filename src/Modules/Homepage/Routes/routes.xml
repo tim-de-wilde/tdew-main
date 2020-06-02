@@ -1,14 +1,8 @@
 <routes>
-<route>
-    <method>GET</method>
-    <route>/Home</route>
-    <controller>\tdewmain\src\Modules\Homepage\Controllers\Homepage</controller>
-    <permissions>guest</permissions>
-</route>
     <route>
-        <method>GET|POST</method>
-        <route>/Post</route>
-        <controller>\tdewmain\src\Modules\Homepage\Controllers\PostCallTest</controller>
+        <method>GET</method>
+        <route>/Home</route>
+        <controller>\tdewmain\src\Modules\Homepage\Controllers\Homepage</controller>
         <permissions>guest</permissions>
     </route>
 </routes>

@@ -1,0 +1,24 @@
+<div>
+    <div class="uk-inline-clip uk-transition-toggle uk-light" tabindex="0">
+        <div class="uk-card uk-card-default uk-background-secondary">
+                <div class="uk-width-1-1">
+                    <img src="{{ card.image }}">
+                </div>
+        </div>
+        <div class="uk-transition-fade uk-position-cover uk-overlay uk-overlay-primary uk-dark">
+            <div class="uk-position-center">
+                <span class="play-button uk-margin-auto-vertical" style="cursor: pointer" track_uri="{{ card.trackUri }}">
+                    <i class="material-icons" id="icon" style="font-size: 65px">play_arrow</i>
+                </span>
+            </div>
+            <div class="uk-position-top-left uk-padding-small">
+                <div class="uk-width-1-1 uk-text-bold" style="color: #FDFDFD;">
+                    {{ card.name }}
+                </div>
+                <div class="uk-width-1-1">
+                    {{ card.artist }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

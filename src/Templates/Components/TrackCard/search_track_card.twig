@@ -1,0 +1,11 @@
+{% extends '@components/TrackCard/base_track_card.twig' %}
+
+{% block overlay_model %}
+    <div class="uk-transition-fade uk-position-cover uk-overlay uk-overlay-primary uk-dark uk-padding-remove uk-grid-small uk-flex-middle">
+        <div class="uk-width-1-6 uk-height-1-1 uk-flex uk-flex-center uk-flex-middle">
+            <span class="clickable hover-highlight color-secondary-4 no-user-select" track-id="{{ card.id }}">
+            <i class="material-icons" id="icon" style="font-size: 65px">add</i>
+            </span>
+        </div>
+    </div>
+{% endblock%}

@@ -5,6 +5,7 @@ use Likes\LikesQuery;
 use tdewmain\src\Helpers\AbstractController;
 use tdewmain\src\Helpers\Authenticator;
 use tdewmain\src\Helpers\PageResponse;
+use tdewmain\src\Helpers\Session;
 
 /**
  * Class SetTrackLike
@@ -24,14 +25,18 @@ class SetTrackLike extends AbstractController
         $track = $pageVars['track_id'];
         $type = $pageVars['like_type'];
         $user = Authenticator::getUser();
+        $band = Session::getSelectedBand() ?? '';
 
-        $like = LikesQuery::create()
-            ->filterByTrack($track)
-            ->filterByUser($user->getId())
-            ->findOneOrCreate();
+        if ($user->isOfBand($band)) {
+            $like = LikesQuery::create()
+                ->filterByTrack($track)
+                ->filterByUser($user->getId())
+                ->filterByBand($band->getId())
+                ->findOneOrCreate();
 
-        $like->setType($type);
-        $like->save();
+            $like->setType($type);
+            $like->save();
+        }
 
         die();
     }

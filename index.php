@@ -22,6 +22,9 @@ try {
     include __DIR__ . '/src/Helpers/Token.php';
     Session::create();
 
+    //todo DEBUG REMOVE WHEN FINISHED!!!
+    $_SESSION['band_id'] = 1;
+
 // global functions
     include __DIR__ . '/src/Helpers/Functions.php';
 
@@ -55,9 +58,16 @@ try {
     include __DIR__ . '/vendor/twig/twig/src/Loader/FilesystemLoader.php';
     include __DIR__ . '/vendor/twig/twig/src/Environment.php';
 
-    $twigLoader = new FilesystemLoader(__DIR__ . '/src/Templates');
+    $rootTemplatesPath = __DIR__ . '/src/Templates';
+//    $twigLoader = new FilesystemLoader($rootTemplatesPath);
+//
+//    $twigLoader->addPath("$rootTemplatesPath/Components", 'components');
+
+    $loader = new FilesystemLoader('src/Templates', getcwd());
+    $loader->addPath('src/Templates/Components', 'components');
+
     $twig = new Environment(
-        $twigLoader,
+        $loader,
 //    [
 //        'cache' => __DIR__ . '/src/Templates/compilation_cache'
 //    ]
@@ -74,6 +84,3 @@ try {
     captureException($e);
     (new ErrorFound())->render();
 }
-
-
-

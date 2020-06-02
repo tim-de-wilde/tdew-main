@@ -1,0 +1,9 @@
+<ul class="uk-subnav uk-margin-small-top" uk-switcher>
+        {% for navItem in item.items %}
+            <li>
+                {% include navItem.template %}
+            </li>
+        {% endfor %}
+</ul>
+
+<hr>

@@ -19,6 +19,7 @@
     <table name="band">
         <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
         <column name="band_name" type="varchar" required="true"/>
+        <column name="image" type="varchar" required="true"/>
     </table>
     <table name="band_to_user">
         <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
@@ -33,10 +34,16 @@
         <column name="trackUri" type="varchar" size="255"/>
         <column name="duration" type="varchar" size="255"/>
     </table>
-    <table name="Likes" phpName="Likes" namespace="Likes">
+    <table name="track_to_band" phpName="TrackToBand" namespace="TrackToBand">
+        <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
+        <column name="track" type="integer" required="true"/>
+        <column name="band" type="integer" required="true"/>
+    </table>
+    <table name="likes" phpName="Likes" namespace="Likes">
         <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
         <column name="user" type="integer" required="true"/>
         <column name="track" type="integer" required="true"/>
+        <column name="band" type="integer" required="true"/>
         <column name="type" type="ENUM" valueSet="like, dislike, neutral" defaultValue="like" required="true"/>
     </table>
 </database>
